@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import { showMenu } from '../store/actions/ShowMenu';
 
 
 
@@ -44,12 +45,22 @@ export class Navigation extends Component {
         this.props.history.push(`/option2`);
     }
 
+    showMenu = () => {
+        console.log(`open`);
+        this.props.showMenu(true);
+    }
+
+    hideSideMenu = () => {
+        console.log(`close`);
+        this.props.showMenu(false);
+    }
+
     render() {
         return (
             <div className="white-back">
                 <div className="main-nav">
                     <div className="main-categories">
-                        <a className="logo-text" href="/account/main">Structures</a>
+                        <p onClick={this.showMenu} className="logo-text">Structures</p>
                         <Link
                             id="option1"
                             onClick={this.handleClick}
@@ -67,18 +78,30 @@ export class Navigation extends Component {
                         <p className="nav-te" onClick={this.handleExit}>Log out</p>
                     </div>
                 </div>
+                <div onClick={this.hideSideMenu} className={this.props.sideMenu ? "shadow" : "shadow shadow-hide"} >
+                    <div className={this.props.sideMenu ? "side-menu" : "side-menu side-menu-hide"}>
+                        <Link
+                            id="departments"
+                            onClick={this.handleDep}
+                            to="/account/departments">Departments</Link>
+                        <Link
+                            id="departments"
+                            onClick={this.handleDep}
+                            to="/account/instruments">Instruments</Link>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    
+    sideMenu: state.sideMenu,
 
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+    showMenu: (bool) => dispatch(showMenu(bool))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navigation))

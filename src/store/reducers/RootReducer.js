@@ -3,6 +3,7 @@ import { notificationCss, notificationText } from './Notification';
 import { loginSpinner } from './Spinner';
 import { dropdownStatus, dropdownOption } from './DropDown';
 import { testsPrice } from './TestQuantity';
+import { sideMenu } from './ShowMenu';
 
 
 const RootReducer = combineReducers({
@@ -13,7 +14,9 @@ const RootReducer = combineReducers({
     dropdownStatus,
     dropdownOption,
     
-    testsPrice
+    testsPrice,
+
+    sideMenu
 });
 
 
