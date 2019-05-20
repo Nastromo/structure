@@ -46,12 +46,10 @@ export class Navigation extends Component {
     }
 
     showMenu = () => {
-        console.log(`open`);
         this.props.showMenu(true);
     }
 
     hideSideMenu = () => {
-        console.log(`close`);
         this.props.showMenu(false);
     }
 

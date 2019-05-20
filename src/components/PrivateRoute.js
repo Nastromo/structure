@@ -5,6 +5,7 @@ import LineSpinner from './LineSpinner';
 import Main from './Main';
 import Navigation from './Navigation';
 import Product from './Product';
+import Instruments from './Instruments';
 
 
 
@@ -21,6 +22,7 @@ export class PrivateRoute extends Component {
                 <Switch>
                     <Route exact path="/account/main" component={Main} />
                     <Route exact path="/account/products" component={Product} />
+                    <Route exact path="/account/instruments" component={Instruments} />
                 </Switch>
             </div>
         )

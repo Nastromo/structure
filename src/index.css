@@ -175,6 +175,7 @@ button {
     border: none;
     cursor: pointer;
     color: #fff;
+    box-sizing: border-box;
 }
 
 .green-btn:hover {
@@ -555,10 +556,6 @@ p.logo-text:hover {
     z-index: 200;
 }
 
-.content-table {
-    margin: -1px 0 0 0;
-    overflow: auto;
-}
 
 .content-table-batch {
     margin: 15px 0 0 0;
@@ -976,14 +973,25 @@ p.logo-text:hover {
     width: 100%;
 }
 
+.right-bi-n {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .save {
     max-width: 150px;
-    margin: 0 10px 0 0;
 }
 
 .fail {
     max-width: 150px;
     margin: 0 10px 0 0;
+}
+
+.fail-s {
+    width: 90px;
+    height: 20px;
+    margin: 0 10px 0 0;
+    background: #cccccc;
 }
 
 .submit {
@@ -1007,6 +1015,19 @@ p.logo-text:hover {
 
 .fail .green-btn{
     background: #cccccc;
+}
+
+.fail-s .green-btn {
+    width: 70px;
+    background: #cccccc;
+    border-radius: 2px;
+}
+
+.save-s .green-btn {
+    width: 90px;
+    height: 24px;
+    background: #23c6c8;
+    border-radius: 2px;
 }
 
 .width100 {
@@ -1705,10 +1726,12 @@ p.logo-text:hover {
     width: 300px;
     height: 100%;
     position: absolute;
+    left: 0;
     display: flex;
     flex-direction: column;
     background: #fff;
     box-shadow: 0 2px 10px #00000013;
+    transition: left .2s ease;
 }
 
 .side-menu a {
@@ -1721,4 +1744,63 @@ p.logo-text:hover {
 
 .side-menu-hide {
     left: -600px;
+}
+
+.two-parts {
+    display: flex;
+    margin: 15px;
+    align-items: flex-start;
+}
+
+.content-table {
+    background: #fff;
+    width: 500px;
+    margin: 0 20px 0 0;
+    overflow: auto;
+}
+
+.right-side {
+    background: #fff;
+    width: 800px;
+    padding: 15px;
+    border: 1px solid #e7eaec;
+}
+
+.side-t {
+    font-weight: 700;
+}
+
+.flex-inst {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.dis33 {
+    flex-basis: 33%;
+}
+
+.tit-ins {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgb(138, 138, 138);
+}
+
+.wide {
+    width: 100%;
+}
+
+.del-save {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#deleteIns {
+    margin: 0 10px 0 0;
+}
+
+#deleteIns button {
+    background: #ccc;
 }
