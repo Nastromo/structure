@@ -4,6 +4,7 @@ import SubmitButton from './SubmitButton';
 import DropDown from './DropDown';
 import { addDef, delDef } from '../store/actions/AddDef';
 import { addRanges, delRanges } from '../store/actions/NormalRanges';
+import { addCriRanges, delCriRanges } from '../store/actions/CriticalRanges';
 
 
 export class ElementSettings extends Component {
@@ -113,7 +114,39 @@ export class ElementSettings extends Component {
     }
 
     delRanges = (e) => {
-        this.props.delRanges(e.target.value);
+        this.props.delRanges(Number(e.target.id));
+    }
+
+    showCriticalRanges = (list) => {
+        console.log(list)
+        return list.map((item, i) => {
+            return (
+                <div className="flex-it">
+                    <div key={i} className="flex-inst def-item marg-ri">
+                        <div className="item-rang">{item.ageFrom}</div>
+                        <div className="item-rang">{item.ageTo}</div>
+                        <div className="item-rang">{item.gender}</div>
+                        <div className="item-rang">{item.low}</div>
+                        <div className="item-rang">{item.high}</div>
+                    </div>
+                    <div id={i} onClick={this.delCriRanges} className="del-all">del</div>
+                </div>
+            )
+        })
+    }
+
+    addCriRanges = () => {
+        this.props.addCriRanges({
+            ageFrom: this.ageFromC.value,
+            ageTo: this.ageToC.value,
+            gender: this.genderC.value,
+            low: this.lowC.value,
+            high: this.highC.value,
+        });
+    }
+
+    delCriRanges = (e) => {
+        this.props.delCriRanges(Number(e.target.id));
     }
 
     render() {
@@ -229,6 +262,33 @@ export class ElementSettings extends Component {
                         <input className="simple-input" type="text" value={this.props.resultD} onChange={this.handleChange} />
                     </div>
                 </div>
+                
+                <p className="side-t mar-t">Critical Ranges</p>
+                <div className="flex-inst ali-end">
+                    <div >
+                        <p className="tit-ins">Age from</p>
+                        <input className="simple-input" type="text" ref={el => this.ageFromC = el} />
+                    </div>
+                    <div >
+                        <p className="tit-ins">Age to</p>
+                        <input className="simple-input" type="text" ref={el => this.ageToC = el} />
+                    </div>
+                    <div >
+                        <p className="tit-ins">Gender</p>
+                        <input className="simple-input" type="text" ref={el => this.genderC = el} />
+                    </div>
+                    <div >
+                        <p className="tit-ins">Low</p>
+                        <input className="simple-input" type="text" ref={el => this.lowC = el} />
+                    </div>
+                    <div >
+                        <p className="tit-ins">High</p>
+                        <input className="simple-input" type="text" ref={el => this.highC = el} />
+                    </div>
+                    <div onClick={this.addCriRanges} className="add-btn">add</div>
+                </div>
+                {this.showCriticalRanges(this.props.criticalRangesList)}
+                
                 <p className="side-t mar-t">Nornal Ranges</p>
                 <div className="flex-inst ali-end">
                     <div >
@@ -254,6 +314,13 @@ export class ElementSettings extends Component {
                     <div onClick={this.addRanges} className="add-btn">add</div>
                 </div>
                 {this.showNormalRanges(this.props.normalRangesList)}
+                
+                <p className="side-t mar-t">Interpratation</p>
+                <textarea
+                    className="gross-other"
+                    value={this.props.interpratation}
+                    onChange={this.handleChange}
+                ></textarea>
             </div>
         )
     }
@@ -275,6 +342,7 @@ const mapStateToProps = (state) => ({
     isAlphaOpen: state.dropdownStatus.alpha,
     defineList: state.defineList,
     normalRangesList: state.normalRangesList,
+    criticalRangesList: state.criticalRangesList,
 
 })
 
@@ -282,7 +350,9 @@ const mapDispatchToProps = dispatch => ({
     addDef: (item) => dispatch(addDef(item)),
     delDef: (index) => dispatch(delDef(index)),
     addRanges: (item) => dispatch(addRanges(item)),
-    delRanges: (index) => dispatch(delRanges(index))
+    delRanges: (index) => dispatch(delRanges(index)),
+    addCriRanges: (item) => dispatch(addCriRanges(item)),
+    delCriRanges: (index) => dispatch(delCriRanges(index)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ElementSettings)
