@@ -6,6 +6,7 @@ import Main from './Main';
 import Navigation from './Navigation';
 import Product from './Product';
 import Instruments from './Instruments';
+import Elements from './Elements';
 
 
 
@@ -23,6 +24,7 @@ export class PrivateRoute extends Component {
                     <Route exact path="/account/main" component={Main} />
                     <Route exact path="/account/products" component={Product} />
                     <Route exact path="/account/instruments" component={Instruments} />
+                    <Route exact path="/account/elements" component={Elements} />
                 </Switch>
             </div>
         )

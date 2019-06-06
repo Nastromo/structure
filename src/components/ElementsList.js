@@ -5,12 +5,12 @@ import '../table.css';
 
 
 
-export class InstrumentsList extends Component {
+export class ElementsList extends Component {
     initColumns = () => {
         return [
             {
-                Header: 'Serial',
-                accessor: 'serial',
+                Header: 'Code',
+                accessor: 'code',
                 style: {
                     textAlign: 'left',
                 }
@@ -29,7 +29,7 @@ export class InstrumentsList extends Component {
     handleRowClick = (state, rowInfo, column, instance) => {
         if (rowInfo) {
             return {
-                onClick: (e, handleOriginal) => this.props.showInstrum(rowInfo.index, this.props.list[rowInfo.index]),
+                onClick: (e, handleOriginal) => this.props.showElement(rowInfo.index, this.props.list[rowInfo.index]),
                 style: {
                     fontWeight: rowInfo.index === this.props.selected ? '700' : '600',
                     color: rowInfo.index === this.props.selected ? '#1ab394' : '#4e4e4e',
@@ -60,16 +60,16 @@ export class InstrumentsList extends Component {
     render() {
         if (this.props.isLoading) return this.renderList([], `Loading list...`);
         if (this.props.isErrored) return this.renderList([], `Error occurred...`);
-        return this.renderList(this.props.list, `No any instruments...`);
+        return this.renderList(this.props.list, `No any elements...`);
     }
 }
 
 const mapStateToProps = (state) => ({
-
+    
 })
 
 const mapDispatchToProps = {
-
+    
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InstrumentsList)
+export default connect(mapStateToProps, mapDispatchToProps)(ElementsList)

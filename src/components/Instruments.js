@@ -6,7 +6,6 @@ import InstrumentSettings from './InstrumentSettings';
 
 
 
-
 export class Instruments extends Component {
 
 

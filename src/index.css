@@ -976,6 +976,61 @@ p.logo-text:hover {
 .right-bi-n {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.wide-yy {
+    width: 363px;
+}
+
+.fle-def {
+    display: flex;
+    margin: 7px 0 0 0;
+}
+
+.def-item {
+    padding: 5px 15px;
+    background: blanchedalmond;
+    color: #000;
+    font-weight: 500;
+    font-size: 0.84rem;
+    width: 100%;
+    margin: 0 12px 0 0;
+    border-radius: 4px;
+}
+
+.marg-ri {
+    margin: 0 10px 0 0 !important;
+}
+
+.ali-end {
+    align-items: flex-end;
+}
+
+.del-all {
+    display: flex;
+    padding: 5px 5px;
+    background: rgb(255, 160, 106);
+    color: rgb(243, 79, 79);
+    font-weight: 700;
+    font-size: 0.84rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.flex-it {
+    display: flex;
+    margin: 7px 0 0 0;
+}
+
+.item-rang {
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.mar-t {
+    margin: 25px 0 0 0;
 }
 
 .save {
@@ -1721,6 +1776,10 @@ p.logo-text:hover {
     width: 0;
 }
 
+.small-t {
+    min-width: 470px;
+}
+
 .side-menu {
     padding: 25px 0;
     width: 300px;
@@ -1761,9 +1820,35 @@ p.logo-text:hover {
 
 .right-side {
     background: #fff;
-    width: 800px;
+    width: 100%;
     padding: 15px;
     border: 1px solid #e7eaec;
+}
+
+.add-btn {
+    height: 37px;
+    width: 37px;
+    background: #12a588;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-btn:active {
+    background: #10947a;
+}
+
+.marg10-n {
+    margin: 12px 0;
+}
+
+.div200w {
+    width: 200px;
 }
 
 .side-t {
@@ -1794,7 +1879,7 @@ p.logo-text:hover {
 .del-save {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 #deleteIns {
