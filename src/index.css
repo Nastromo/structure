@@ -1889,3 +1889,44 @@ p.logo-text:hover {
 #deleteIns button {
     background: #ccc;
 }
+
+.flex-in-ad {
+    display: flex;
+    margin: 10px 0;
+}
+
+.mar-ri-b {
+    margin: 0 6px 0 0;
+    width: 460px;
+}
+
+.just-cen {
+    display: flex;
+    justify-content: center;
+}
+
+.pad-whi {
+    margin: 25px;
+    width: 600px;
+    padding: 15px;
+    border: 1px solid rgb(211, 211, 211);
+    background: #fff;
+}
+
+.fle-in-spe {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0 10px 0;
+}
+
+.item-spec-l {
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 0;
+    background: blanchedalmond;
+    font-weight: 700;
+    align-items: center;
+    padding: 0 0 0 15px;
+    cursor: pointer;
+}
+

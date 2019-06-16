@@ -34,11 +34,12 @@ export class InstrumentSettings extends Component {
                     </div>
                     <div className="dis33">
                         <p className="tit-ins">Instrument Type</p>
-                        <DropDown
+                        {/* <DropDown
                             option={this.props.chosenType}
                             status={this.props.isTypeOpen}
                             menu={this.props.instrumTypes}
-                            id="types" />
+                            id="types" /> */}
+                        <input className="simple-input" type="text" value={this.props.serial} onChange={this.handleChange} />
                     </div>
                     <div className="dis33">
                         <p className="tit-ins">Department</p>
@@ -47,6 +48,17 @@ export class InstrumentSettings extends Component {
                             status={this.props.isDepOpen}
                             menu={this.props.departments}
                             id="departments" />
+                    </div>
+                </div>
+                <p className="side-t">Instrument List</p>
+                <div className="flex-in-ad">
+                    <input className="simple-input mar-ri-b" type="text" value={this.props.serial} onChange={this.handleChange} />
+                    <div onClick={this.addInstrum} className="add-btn">add</div>
+                </div>
+
+                <div>
+                    <div className="flex-in-ad">
+                            
                     </div>
                 </div>
 

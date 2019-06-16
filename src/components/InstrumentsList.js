@@ -9,13 +9,6 @@ export class InstrumentsList extends Component {
     initColumns = () => {
         return [
             {
-                Header: 'Serial',
-                accessor: 'serial',
-                style: {
-                    textAlign: 'left',
-                }
-            },
-            {
                 Header: 'Type',
                 accessor: 'type',
             },

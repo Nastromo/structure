@@ -8,6 +8,7 @@ import { instrument } from './Instrument';
 import { defineList } from './AddDef';
 import { normalRangesList } from './NormalRanges';
 import { criticalRangesList } from './CriticalRanges';
+import { code, desc, specList } from './Specs';
 
 
 const RootReducer = combineReducers({
@@ -27,7 +28,11 @@ const RootReducer = combineReducers({
     defineList,
 
     normalRangesList,
-    criticalRangesList
+    criticalRangesList,
+
+    code,
+    desc,
+    specList
 });
 
 
