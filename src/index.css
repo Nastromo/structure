@@ -1851,6 +1851,10 @@ p.logo-text:hover {
     width: 200px;
 }
 
+.div300w {
+    width: 300px;
+}
+
 .side-t {
     font-weight: 700;
 }
@@ -1928,5 +1932,26 @@ p.logo-text:hover {
     align-items: center;
     padding: 0 0 0 15px;
     cursor: pointer;
+}
+
+.der-fl {
+    display: flex;
+    justify-content: space-between;
+}
+
+.m15 {
+    margin: 35px 0 0 0;
+}
+
+.fle-start {
+    justify-content: flex-start;
+}
+
+.mar40k {
+    margin: 0 50px 0 0;
+}
+
+.m09 {
+    margin: 10px 0 0 0;
 }
 

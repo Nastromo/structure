@@ -94,6 +94,10 @@ export class Navigation extends Component {
                             id="specimens"
                             onClick={this.handleDep}
                             to="/account/specimens">Specimens list</Link>
+                        <Link
+                            id="specimens"
+                            onClick={this.handleDep}
+                            to="/account/tests">Test Maintenance</Link>
                     </div>
                 </div>
             </div>

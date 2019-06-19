@@ -8,6 +8,7 @@ import Product from './Product';
 import Instruments from './Instruments';
 import Elements from './Elements';
 import Specimens from './Specimens';
+import Tests from './Tests';
 
 
 
@@ -27,6 +28,7 @@ export class PrivateRoute extends Component {
                     <Route exact path="/account/instruments" component={Instruments} />
                     <Route exact path="/account/elements" component={Elements} />
                     <Route exact path="/account/specimens" component={Specimens} />
+                    <Route exact path="/account/tests" component={Tests} />
                 </Switch>
             </div>
         )

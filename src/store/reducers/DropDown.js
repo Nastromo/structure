@@ -26,6 +26,38 @@ export const dropdownStatus = (state = {}, action) => {
                 newState = JSON.parse(JSON.stringify(state));
                 newState.alpha = action.obj.status;
                 return newState;
+            case `resTypes`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.status = action.obj.status;
+                return newState;
+            case `stability`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.stability = action.obj.status;
+                return newState;
+            case `priority`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.priority = action.obj.status;
+                return newState;
+            case `autostat`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.autoStat = action.obj.status;
+                return newState;
+            case `critical`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.critical = action.obj.status;
+                return newState;
+            case `speReq`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.speReq = action.obj.status;
+                return newState;
+            case `shipping`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.shipping = action.obj.status;
+                return newState;
+            case `alternative`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.alternative = action.obj.status;
+                return newState;
             default: return state;
         }
     } else {
@@ -60,6 +92,38 @@ export const dropdownOption = (state = {}, action) => {
             case `alpha`:
                 newState = JSON.parse(JSON.stringify(state));
                 newState.alpha = action.obj.option;
+                return newState;
+            case `resTypes`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.status = action.obj.option;
+                return newState;
+            case `stability`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.stability = action.obj.option;
+                return newState;
+            case `priority`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.priority = action.obj.option;
+                return newState;
+            case `autostat`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.autoStat = action.obj.option;
+                return newState;
+            case `critical`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.critical = action.obj.option;
+                return newState;
+            case `speReq`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.speReq = action.obj.option;
+                return newState;
+            case `shipping`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.shipping = action.obj.option;
+                return newState;
+            case `alternative`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.alternative = action.obj.option;
                 return newState;
             default: return state;
         }
