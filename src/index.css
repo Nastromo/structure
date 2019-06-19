@@ -1042,6 +1042,13 @@ p.logo-text:hover {
     margin: 0 10px 0 0;
 }
 
+.max-hei {
+    max-height: 100px;
+    border: 1px solid #dadada;
+    overflow: scroll;
+    padding: 5px;
+}
+
 .fail-s {
     width: 90px;
     height: 20px;
@@ -1953,5 +1960,18 @@ p.logo-text:hover {
 
 .m09 {
     margin: 10px 0 0 0;
+}
+
+.gg-start {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.mar-ri {
+    margin: 0 15px 0 0;
+}
+
+.wide33 {
+    width: 370px;
 }
 

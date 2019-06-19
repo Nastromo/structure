@@ -214,8 +214,8 @@ export class ElementSettings extends Component {
                         <input className="simple-input" type="text" value={this.props.loinc} onChange={this.handleChange} />
                     </div>
                 </div>
-                <div className="del-save">
-                    <p className="side-t">Acceptable Numeric Limits</p>
+                <div className="del-save gg-start">
+                    <p className="side-t mar-ri">Acceptable Numeric Limits</p>
                     <div className="right-bi-n marg10-n">
                         <div id="deleteIns" className="save-s">
                             <input className="simple-input" type="text" placeholder="Low" value={this.props.low} onChange={this.handleChange} />
@@ -226,8 +226,8 @@ export class ElementSettings extends Component {
                     </div>
                 </div>
                 {this.injectHold(this.props.chosenType)}
-                <div className="del-save">
-                    <div className="div200w">
+                <div className="del-save gg-start">
+                    <div className="div200w mar-ri">
                         <p className="tit-ins">Alpha Numeric</p>
                         <DropDown
                             option={this.props.alpha}
@@ -248,21 +248,23 @@ export class ElementSettings extends Component {
                     </div>
 
                 </div>
-                <div className="flex-inst"> 
+
+                <p className="side-t mar-t">DOH Criteria</p>
+                <div className="flex-inst">
                     <div >
                         <p className="tit-ins">DOH LOINC</p>
-                        <input className="simple-input" type="text" value={this.props.doh} onChange={this.handleChange} />
+                        <input className="simple-input wide33" type="text" value={this.props.doh} onChange={this.handleChange} />
                     </div>
                     <div >
                         <p className="tit-ins">{`Criteria + < >`}</p>
-                        <input className="simple-input" type="text" value={this.props.criteria} onChange={this.handleChange} />
+                        <input className="simple-input wide33" type="text" value={this.props.criteria} onChange={this.handleChange} />
                     </div>
                     <div >
                         <p className="tit-ins">Result</p>
-                        <input className="simple-input" type="text" value={this.props.resultD} onChange={this.handleChange} />
+                        <input className="simple-input wide33" type="text" value={this.props.resultD} onChange={this.handleChange} />
                     </div>
                 </div>
-                
+
                 <p className="side-t mar-t">Critical Ranges</p>
                 <div className="flex-inst ali-end">
                     <div >
@@ -287,8 +289,11 @@ export class ElementSettings extends Component {
                     </div>
                     <div onClick={this.addCriRanges} className="add-btn">add</div>
                 </div>
-                {this.showCriticalRanges(this.props.criticalRangesList)}
-                
+                <div className="max-hei">
+                    {this.showCriticalRanges(this.props.criticalRangesList)}
+                </div>
+
+
                 <p className="side-t mar-t">Nornal Ranges</p>
                 <div className="flex-inst ali-end">
                     <div >
@@ -313,8 +318,11 @@ export class ElementSettings extends Component {
                     </div>
                     <div onClick={this.addRanges} className="add-btn">add</div>
                 </div>
-                {this.showNormalRanges(this.props.normalRangesList)}
-                
+                <div className="max-hei">
+                    {this.showNormalRanges(this.props.normalRangesList)}
+                </div>
+
+
                 <p className="side-t mar-t">Interpratation</p>
                 <textarea
                     className="gross-other"
