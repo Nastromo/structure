@@ -9,6 +9,7 @@ import { defineList } from './AddDef';
 import { normalRangesList } from './NormalRanges';
 import { criticalRangesList } from './CriticalRanges';
 import { code, desc, specList } from './Specs';
+import { instrums } from './Instrums';
 
 
 const RootReducer = combineReducers({
@@ -32,7 +33,9 @@ const RootReducer = combineReducers({
 
     code,
     desc,
-    specList
+    specList,
+
+    instrums
 });
 
 

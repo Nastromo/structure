@@ -1,10 +1,7 @@
-export const instrument = (state = {}, action) => {
-    let newState;
+export const instrument = (state = "", action) => {
     switch (action.type) {
         case `SET_INSTRUM_SERIAL`:
-            newState = JSON.parse(JSON.stringify(state));
-            newState.serial = action.text;
-            return newState;
+            return action.text;
 
         default: return state;
     }

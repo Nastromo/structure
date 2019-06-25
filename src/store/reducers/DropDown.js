@@ -58,6 +58,10 @@ export const dropdownStatus = (state = {}, action) => {
                 newState = JSON.parse(JSON.stringify(state));
                 newState.alternative = action.obj.status;
                 return newState;
+            case `aoe`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.aoe = action.obj.status;
+                return newState;
             default: return state;
         }
     } else {
@@ -124,6 +128,10 @@ export const dropdownOption = (state = {}, action) => {
             case `alternative`:
                 newState = JSON.parse(JSON.stringify(state));
                 newState.alternative = action.obj.option;
+                return newState;
+            case `aoe`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.aoe = action.obj.option;
                 return newState;
             default: return state;
         }

@@ -1855,7 +1855,7 @@ p.logo-text:hover {
 }
 
 .div200w {
-    width: 200px;
+    width: 300px;
 }
 
 .div300w {
@@ -1880,7 +1880,7 @@ p.logo-text:hover {
 .tit-ins {
     font-size: 0.8rem;
     font-weight: 700;
-    color: rgb(138, 138, 138);
+    color: #000;
 }
 
 .wide {
@@ -1975,3 +1975,45 @@ p.logo-text:hover {
     width: 370px;
 }
 
+.wi-er {
+    width: 700px;
+    margin: 15px 0;
+}
+
+.wiyt {
+    width: 300px;
+}
+
+.red-poe {
+    width: 400px;
+}
+
+.wi400p {
+    width: 400px;
+}
+
+.scroll-150 {
+    height: 70px;
+    overflow: scroll;
+}
+
+.back-lin {
+    padding: 4px 15px;
+    display: flex;
+    align-items: center;
+    background: blanchedalmond;
+    justify-content: space-between;
+    margin: 4px 0;
+}
+
+.back-lin p:first-child {
+    margin: 0 40px 0 0;
+}
+
+.back-lin {
+    font-weight: 600;
+}
+
+.fle-tt {
+    display: flex;
+}

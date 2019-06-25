@@ -20,11 +20,11 @@ export class TestsSettings extends Component {
                 <div className="der-fl">
                     <div >
                         <p className="tit-ins">Code</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
                     </div>
                     <div >
                         <p className="tit-ins">Description</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
                     </div>
                     <div >
                         <p className="tit-ins">Status</p>
@@ -37,12 +37,12 @@ export class TestsSettings extends Component {
                         </div>
                     </div>
                     <div >
-                        <p className="tit-ins">Main... Lab</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <p className="tit-ins">Mailout Lab</p>
+                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
                     </div>
                     <div >
-                        <p className="tit-ins">Main... Code</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <p className="tit-ins">Mailout Code</p>
+                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
                     </div>
                 </div>
 
@@ -112,11 +112,11 @@ export class TestsSettings extends Component {
                     </div>
                     <div >
                         <p className="tit-ins">Specimen Volume</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
                     </div>
                     <div >
                         <p className="tit-ins">Specimen Container</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
                     </div>
                     <div >
                         <p className="tit-ins">Shipping Temperature</p>
@@ -130,26 +130,46 @@ export class TestsSettings extends Component {
                     </div>
                 </div>
 
-                <div className="der-fl m15">
+                <div className="wi-er">
                     <div >
                         <p className="tit-ins">Specimen Stability</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <textarea
+                            className="gross-other"
+                            value={this.props.comment}
+                            onChange={this.handleChange}
+                        ></textarea>
                     </div>
                     <div >
                         <p className="tit-ins">Collection Instructions</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <textarea
+                            className="gross-other"
+                            value={this.props.comment}
+                            onChange={this.handleChange}
+                        ></textarea>
                     </div>
                     <div >
                         <p className="tit-ins">Rejection Criteria</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <textarea
+                            className="gross-other"
+                            value={this.props.comment}
+                            onChange={this.handleChange}
+                        ></textarea>
                     </div>
                     <div >
                         <p className="tit-ins">Clinical Information</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <textarea
+                            className="gross-other"
+                            value={this.props.comment}
+                            onChange={this.handleChange}
+                        ></textarea>
                     </div>
                     <div >
                         <p className="tit-ins">Patient Reparation</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <textarea
+                            className="gross-other"
+                            value={this.props.comment}
+                            onChange={this.handleChange}
+                        ></textarea>
                     </div>
                 </div>
 
@@ -168,10 +188,10 @@ export class TestsSettings extends Component {
                     <p className="tit-ins">AOE</p>
                     <div className="div200w">
                         <DropDown
-                            option={this.props.speReqOption}
-                            status={this.props.isSpeReqOpen}
+                            option={this.props.aoeOption}
+                            status={this.props.isAoeReqOpen}
                             menu={this.aoe}
-                            id="speReq" />
+                            id="aoe" />
                     </div>
                 </div>
 
@@ -203,6 +223,8 @@ const mapStateToProps = (state) => ({
     isAlternativeOpen: state.dropdownStatus.alternative,
     shipOption: state.dropdownOption.shipping,
     isShipOpen: state.dropdownStatus.shipping,
+    aoeOption: state.dropdownOption.aoe,
+    isAoeReqOpen: state.dropdownStatus.aoe,
 
 })
 
