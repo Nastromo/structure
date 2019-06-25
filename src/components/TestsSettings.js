@@ -87,6 +87,10 @@ export class TestsSettings extends Component {
                                 id="critical" />
                         </div>
                     </div>
+                    <div >
+                        <p className="tit-ins">Centralink Required</p>
+                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
+                    </div>
                 </div>
 
                 <div className="der-fl m15">
