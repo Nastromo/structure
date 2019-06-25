@@ -9,6 +9,7 @@ import Instruments from './Instruments';
 import Elements from './Elements';
 import Specimens from './Specimens';
 import Tests from './Tests';
+import Departments from './Departments';
 
 
 
@@ -23,6 +24,7 @@ export class PrivateRoute extends Component {
             <div>
                 <Navigation />
                 <Switch>
+                    <Route exact path="/account/departments" component={Departments} />
                     <Route exact path="/account/main" component={Main} />
                     <Route exact path="/account/products" component={Product} />
                     <Route exact path="/account/instruments" component={Instruments} />
@@ -36,11 +38,11 @@ export class PrivateRoute extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PrivateRoute))

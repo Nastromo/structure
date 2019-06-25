@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import { showMenu } from '../store/actions/ShowMenu';
+import { showMenu, showItems } from '../store/actions/ShowMenu';
 
 
 
@@ -38,7 +38,7 @@ export class Navigation extends Component {
     }
 
     handleExit = () => {
-        this.props.history.push(`/option1`);
+        this.props.history.push(`/`);
     }
 
     handleSettings = () => {
@@ -49,8 +49,14 @@ export class Navigation extends Component {
         this.props.showMenu(true);
     }
 
-    hideSideMenu = () => {
-        this.props.showMenu(false);
+    hideSideMenu = (e) => {
+        if (e.target.id !== `item-m`) {
+            this.props.showMenu(false);
+        }
+    }
+
+    showItems = (e) => {
+        this.props.showItems(!this.props.subItems);
     }
 
     render() {
@@ -58,7 +64,12 @@ export class Navigation extends Component {
             <div className="white-back">
                 <div className="main-nav">
                     <div className="main-categories">
-                        <p onClick={this.showMenu} className="logo-text">Structures</p>
+                        <div onClick={this.showMenu} className="hamburger">
+                            <div className="ham-line"></div>
+                            <div className="ham-line"></div>
+                            <div className="ham-line"></div>
+                        </div>
+                        <p className="logo-text">ADMIN</p>
                         <Link
                             id="option1"
                             onClick={this.handleClick}
@@ -78,26 +89,32 @@ export class Navigation extends Component {
                 </div>
                 <div onClick={this.hideSideMenu} className={this.props.sideMenu ? "shadow" : "shadow shadow-hide"} >
                     <div className={this.props.sideMenu ? "side-menu" : "side-menu side-menu-hide"}>
-                        <Link
-                            id="departments"
-                            onClick={this.handleDep}
-                            to="/account/departments">Departments</Link>
-                        <Link
-                            id="departments"
-                            onClick={this.handleDep}
-                            to="/account/instruments">Instruments</Link>
-                        <Link
-                            id="departments"
-                            onClick={this.handleDep}
-                            to="/account/elements">Elements</Link>
-                        <Link
-                            id="specimens"
-                            onClick={this.handleDep}
-                            to="/account/specimens">Specimens list</Link>
-                        <Link
-                            id="specimens"
-                            onClick={this.handleDep}
-                            to="/account/tests">Test Maintenance</Link>
+                        <div className="struct">
+                            <p onClick={this.showItems} id="item-m">STRUCTURE</p>
+                            <div className={this.props.subItems ? "sub-struct-show" : "sub-struct"}>
+                                <Link
+                                    id="departments"
+                                    onClick={this.handleDep}
+                                    to="/account/departments">Departments</Link>
+                                <Link
+                                    id="departments"
+                                    onClick={this.handleDep}
+                                    to="/account/instruments">Instruments</Link>
+                                <Link
+                                    id="departments"
+                                    onClick={this.handleDep}
+                                    to="/account/elements">Elements</Link>
+                                <Link
+                                    id="specimens"
+                                    onClick={this.handleDep}
+                                    to="/account/specimens">Specimens list</Link>
+                                <Link
+                                    id="specimens"
+                                    onClick={this.handleDep}
+                                    to="/account/tests">Test Maintenance</Link>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -107,11 +124,13 @@ export class Navigation extends Component {
 
 const mapStateToProps = (state) => ({
     sideMenu: state.sideMenu,
+    subItems: state.subItems,
 
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    showMenu: (bool) => dispatch(showMenu(bool))
+    showMenu: (bool) => dispatch(showMenu(bool)),
+    showItems: (bool) => dispatch(showItems(bool))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navigation))
