@@ -95,26 +95,6 @@ export class TestsSettings extends Component {
 
                 <div className="der-fl m15">
                     <div >
-                        <p className="tit-ins">Specimen Required</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.speReqOption}
-                                status={this.props.isSpeReqOpen}
-                                menu={this.list}
-                                id="speReq" />
-                        </div>
-                    </div>
-                    <div >
-                        <p className="tit-ins">Alternative Specimen</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.alternativeOption}
-                                status={this.props.isAlternativeOpen}
-                                menu={this.list}
-                                id="alternative" />
-                        </div>
-                    </div>
-                    <div >
                         <p className="tit-ins">Specimen Volume</p>
                         <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
                     </div>
@@ -134,48 +114,86 @@ export class TestsSettings extends Component {
                     </div>
                 </div>
 
-                <div className="wi-er">
-                    <div >
-                        <p className="tit-ins">Specimen Stability</p>
-                        <textarea
-                            className="gross-other"
-                            value={this.props.comment}
-                            onChange={this.handleChange}
-                        ></textarea>
+                <div className="flex-rr">
+                    <div className="wi-er">
+                        <div >
+                            <p className="tit-ins">Specimen Stability</p>
+                            <textarea
+                                className="gross-other"
+                                value={this.props.comment}
+                                onChange={this.handleChange}
+                            ></textarea>
+                        </div>
+                        <div >
+                            <p className="tit-ins">Collection Instructions</p>
+                            <textarea
+                                className="gross-other"
+                                value={this.props.comment}
+                                onChange={this.handleChange}
+                            ></textarea>
+                        </div>
+                        <div >
+                            <p className="tit-ins">Rejection Criteria</p>
+                            <textarea
+                                className="gross-other"
+                                value={this.props.comment}
+                                onChange={this.handleChange}
+                            ></textarea>
+                        </div>
+                        <div >
+                            <p className="tit-ins">Clinical Information</p>
+                            <textarea
+                                className="gross-other"
+                                value={this.props.comment}
+                                onChange={this.handleChange}
+                            ></textarea>
+                        </div>
+                        <div >
+                            <p className="tit-ins">Patient Reparation</p>
+                            <textarea
+                                className="gross-other"
+                                value={this.props.comment}
+                                onChange={this.handleChange}
+                            ></textarea>
+                        </div>
                     </div>
-                    <div >
-                        <p className="tit-ins">Collection Instructions</p>
-                        <textarea
-                            className="gross-other"
-                            value={this.props.comment}
-                            onChange={this.handleChange}
-                        ></textarea>
-                    </div>
-                    <div >
-                        <p className="tit-ins">Rejection Criteria</p>
-                        <textarea
-                            className="gross-other"
-                            value={this.props.comment}
-                            onChange={this.handleChange}
-                        ></textarea>
-                    </div>
-                    <div >
-                        <p className="tit-ins">Clinical Information</p>
-                        <textarea
-                            className="gross-other"
-                            value={this.props.comment}
-                            onChange={this.handleChange}
-                        ></textarea>
-                    </div>
-                    <div >
-                        <p className="tit-ins">Patient Reparation</p>
-                        <textarea
-                            className="gross-other"
-                            value={this.props.comment}
-                            onChange={this.handleChange}
-                        ></textarea>
+                    <div className="wi-er">
+                        <div >
+                            <p className="tit-ins">Specimen Required</p>
+                            <div className="div400w">
+                                <DropDown
+                                    option={this.props.speReqOption}
+                                    status={this.props.isSpeReqOpen}
+                                    menu={this.list}
+                                    id="speReq" />
+                            </div>
+                            <div className="ram-200"></div>
+                        </div>
+                        <div >
+                            <p className="tit-ins">Alternative Specimen</p>
+                            <div className="div400w">
+                                <DropDown
+                                    option={this.props.alternativeOption}
+                                    status={this.props.isAlternativeOpen}
+                                    menu={this.list}
+                                    id="alternative" />
+                            </div>
+                            <div className="ram-200"></div>
+                        </div>
+                        <div className="m15">
+                            <p className="tit-ins">AOE</p>
+                            <div className="div400w">
+                                <DropDown
+                                    option={this.props.aoeOption}
+                                    status={this.props.isAoeReqOpen}
+                                    menu={this.aoe}
+                                    id="aoe" />
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
 
                 <div className="der-fl m15 fle-start">
                     <div className="mar40k">
@@ -185,17 +203,6 @@ export class TestsSettings extends Component {
                     <div >
                         <p className="tit-ins">Methodology</p>
                         <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
-                    </div>
-                </div>
-
-                <div className="m15">
-                    <p className="tit-ins">AOE</p>
-                    <div className="div200w">
-                        <DropDown
-                            option={this.props.aoeOption}
-                            status={this.props.isAoeReqOpen}
-                            menu={this.aoe}
-                            id="aoe" />
                     </div>
                 </div>
 

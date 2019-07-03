@@ -12,6 +12,7 @@ export class ElementSettings extends Component {
         super(props);
         this.types = [`Instrument`, `Manual`];
         this.alergy = [`Yes`, `No`];
+        this.gender = [`All`, `Female`, `Male`];
     }
 
     inject = (option) => {
@@ -118,7 +119,6 @@ export class ElementSettings extends Component {
     }
 
     showCriticalRanges = (list) => {
-        console.log(list)
         return list.map((item, i) => {
             return (
                 <div className="flex-it">
@@ -244,12 +244,14 @@ export class ElementSettings extends Component {
                             </div>
                             <div onClick={this.addDefine} className="add-btn">add</div>
                         </div>
-                        {this.showDefineList(this.props.defineList)}
                     </div>
-
+                </div>
+                <div className="gg-der">
+                    {this.showDefineList(this.props.defineList)}
                 </div>
 
-                <p className="side-t mar-t">DOH Criteria</p>
+
+                <p className="side-t mar-t brou">DOH Criteria</p>
                 <div className="flex-inst">
                     <div >
                         <p className="tit-ins">DOH LOINC</p>
@@ -277,7 +279,13 @@ export class ElementSettings extends Component {
                     </div>
                     <div >
                         <p className="tit-ins">Gender</p>
-                        <input className="simple-input" type="text" ref={el => this.genderC = el} />
+                        <div className="div200w">
+                            <DropDown
+                                option={this.props.genderCrit}
+                                status={this.props.isGenCritOpen}
+                                menu={this.gender}
+                                id="genderCrit" />
+                        </div>
                     </div>
                     <div >
                         <p className="tit-ins">Low</p>
@@ -306,7 +314,13 @@ export class ElementSettings extends Component {
                     </div>
                     <div >
                         <p className="tit-ins">Gender</p>
-                        <input className="simple-input" type="text" ref={el => this.gender = el} />
+                        <div className="div200w">
+                            <DropDown
+                                option={this.props.genderNorm}
+                                status={this.props.isGenNormOpen}
+                                menu={this.gender}
+                                id="genderNorm" />
+                        </div>
                     </div>
                     <div >
                         <p className="tit-ins">Low</p>
@@ -351,7 +365,10 @@ const mapStateToProps = (state) => ({
     defineList: state.defineList,
     normalRangesList: state.normalRangesList,
     criticalRangesList: state.criticalRangesList,
-
+    genderCrit: state.dropdownOption.genderCrit,
+    isGenCritOpen: state.dropdownStatus.genderCrit,
+    genderNorm: state.dropdownOption.genderNorm,
+    isGenNormOpen: state.dropdownStatus.genderNorm,
 })
 
 const mapDispatchToProps = dispatch => ({

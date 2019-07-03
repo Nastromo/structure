@@ -62,6 +62,14 @@ export const dropdownStatus = (state = {}, action) => {
                 newState = JSON.parse(JSON.stringify(state));
                 newState.aoe = action.obj.status;
                 return newState;
+            case `genderCrit`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.genderCrit = action.obj.status;
+                return newState;
+            case `genderNorm`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.genderNorm = action.obj.status;
+                return newState;
             default: return state;
         }
     } else {
@@ -132,6 +140,14 @@ export const dropdownOption = (state = {}, action) => {
             case `aoe`:
                 newState = JSON.parse(JSON.stringify(state));
                 newState.aoe = action.obj.option;
+                return newState;
+            case `genderCrit`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.genderCrit = action.obj.option;
+                return newState;
+            case `genderNorm`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.genderNorm = action.obj.option;
                 return newState;
             default: return state;
         }

@@ -1862,6 +1862,10 @@ p.logo-text:hover {
     width: 300px;
 }
 
+.div400w {
+    width: 400px;
+}
+
 .side-t {
     font-weight: 700;
 }
@@ -1977,7 +1981,7 @@ p.logo-text:hover {
 
 .wi-er {
     width: 700px;
-    margin: 15px 0;
+    margin: 15px 15px 15px 0;
 }
 
 .wiyt {
@@ -2049,4 +2053,22 @@ p.logo-text:hover {
 .sub-struct-show {
     display: flex;
     flex-direction: column;
+}
+
+.brou {
+    background: #e4e4e4;
+}
+
+.flex-rr {
+    display: flex;
+}
+
+.ram-200 {
+    margin: 15px 0;
+    height: 100px;
+    overflow: scroll;
+}
+
+.gg-der {
+    width: 721px;
 }
