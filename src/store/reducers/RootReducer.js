@@ -11,12 +11,15 @@ import { criticalRangesList } from './CriticalRanges';
 import { code, desc, specList } from './Specs';
 import { instrums } from './Instrums';
 import { deps } from './Deps';
+import { checkbox } from './CheckBox';
 
 
 const RootReducer = combineReducers({
     loginSpinner,
     notificationCss,
     notificationText,
+
+    checkbox,
 
     dropdownStatus,
     dropdownOption,

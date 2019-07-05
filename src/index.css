@@ -2072,3 +2072,113 @@ p.logo-text:hover {
 .gg-der {
     width: 721px;
 }
+
+.felx-fd {
+    display: flex;
+}
+
+.felx-fds {
+    display: flex;
+    margin: 0 0 10px 0;
+}
+
+.mar44f {
+    width: 270px;
+    margin: 0 15px 0 0;
+}
+
+#mar44f {
+    margin: 0;
+}
+
+.mart33fd {
+    margin: 25px 0;
+}
+
+.mared {
+    width: 510px;
+    margin: 0 10px 0 0;
+}
+
+.gle-fgre {
+    background: #dadada;
+    display: flex;
+}
+
+#testCodde {
+    margin: 0 55px 0 0;
+}
+
+#dfer {
+    margin: 0 290px 0 0;
+}
+
+.sceool-codes {
+    height: 120px;
+    margin: 10px 0;
+    overflow: scroll;
+}
+
+.check {
+    height: 15px;
+    width: 15px;
+}
+
+.fger-ffr {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wisto {
+    width: 100%;
+}
+
+.just-end {
+    justify-content: space-between;
+}
+
+.mar-ggee {
+    margin: 0 15px 0 0;
+}
+
+.ert-t {
+    flex-basis: 50%;
+}
+
+.mar-gh {
+    margin: 0 10px 0 0;
+}
+
+.maredlo {
+    width: 100%;
+    margin: 0 10px 0 0;
+}
+
+.inc-btn-d {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: none;
+    background: #ff8146;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.84rem;
+    width: 120px;
+    height: 35px;
+    margin: 0 10px 0 0;
+}
+
+.sub-btn-er {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: none;
+    background: #1ab394;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.84rem;
+    width: 120px;
+    height: 35px;
+}

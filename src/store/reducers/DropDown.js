@@ -70,6 +70,14 @@ export const dropdownStatus = (state = {}, action) => {
                 newState = JSON.parse(JSON.stringify(state));
                 newState.genderNorm = action.obj.status;
                 return newState;
+            case `igs`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.igs = action.obj.status;
+                return newState;
+            case `perm`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.perm = action.obj.status;
+                return newState;
             default: return state;
         }
     } else {
@@ -148,6 +156,14 @@ export const dropdownOption = (state = {}, action) => {
             case `genderNorm`:
                 newState = JSON.parse(JSON.stringify(state));
                 newState.genderNorm = action.obj.option;
+                return newState;
+            case `igs`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.igs = action.obj.option;
+                return newState;
+            case `perm`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.perm = action.obj.option;
                 return newState;
             default: return state;
         }
