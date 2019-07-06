@@ -245,27 +245,31 @@ export class ElementSettings extends Component {
                             <div onClick={this.addDefine} className="add-btn">add</div>
                         </div>
                     </div>
+                    <div>
+                        <p className="side-t mar-t brou">DOH Criteria</p>
+                        <div className="flex-inst">
+                            <div >
+                                <p className="tit-ins">DOH LOINC</p>
+                                <input className="simple-input wide33" type="text" value={this.props.doh} onChange={this.handleChange} />
+                            </div>
+                            <div >
+                                <p className="tit-ins">{`Criteria + < >`}</p>
+                                <input className="simple-input wide33" type="text" value={this.props.criteria} onChange={this.handleChange} />
+                            </div>
+                            <div >
+                                <p className="tit-ins">Result</p>
+                                <input className="simple-input wide33" type="text" value={this.props.resultD} onChange={this.handleChange} />
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div className="gg-der">
                     {this.showDefineList(this.props.defineList)}
                 </div>
 
 
-                <p className="side-t mar-t brou">DOH Criteria</p>
-                <div className="flex-inst">
-                    <div >
-                        <p className="tit-ins">DOH LOINC</p>
-                        <input className="simple-input wide33" type="text" value={this.props.doh} onChange={this.handleChange} />
-                    </div>
-                    <div >
-                        <p className="tit-ins">{`Criteria + < >`}</p>
-                        <input className="simple-input wide33" type="text" value={this.props.criteria} onChange={this.handleChange} />
-                    </div>
-                    <div >
-                        <p className="tit-ins">Result</p>
-                        <input className="simple-input wide33" type="text" value={this.props.resultD} onChange={this.handleChange} />
-                    </div>
-                </div>
+
 
                 <p className="side-t mar-t">Critical Ranges</p>
                 <div className="flex-inst ali-end">
