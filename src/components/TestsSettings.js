@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropDown from './DropDown';
+import { setCode, setDesc, setLab, setMailoutCode, setCentralink, setVolume, setContainer, handleStability, handleInstruc, handleCrit, handleInfo, handleRepa, setTat, setMet, setDef } from '../store/actions/Test';
 
 
 
@@ -14,23 +15,69 @@ export class TestsSettings extends Component {
         this.aoe = [`option1`, `option2`];
     }
 
+    setCode = (e) => {
+        this.props.setCode(e.target.value);
+    }
+    setDesc = (e) => {
+        this.props.setDesc(e.target.value);
+    }
+    setLab = (e) => {
+        this.props.setLab(e.target.value);
+    }
+    setMailoutCode = (e) => {
+        this.props.setMailoutCode(e.target.value);
+    }
+    setCentralink = (e) => {
+        this.props.setCentralink(e.target.value);
+    }
+    setVolume = (e) => {
+        this.props.setVolume(e.target.value);
+    }
+    setContainer = (e) => {
+        this.props.setContainer(e.target.value);
+    }
+    handleStability = (e) => {
+        this.props.handleStability(e.target.value);
+    }
+    handleInstruc = (e) => {
+        this.props.handleInstruc(e.target.value);
+    }
+    handleCrit = (e) => {
+        this.props.handleCrit(e.target.value);
+    }
+    handleInfo = (e) => {
+        this.props.handleInfo(e.target.value);
+    }
+    handleRepa = (e) => {
+        this.props.handleRepa(e.target.value);
+    }
+    setTat = (e) => {
+        this.props.setTat(e.target.value);
+    }
+    setMet = (e) => {
+        this.props.setMet(e.target.value);
+    }
+    setDef = (e) => {
+        this.props.setDef(e.target.value);
+    }
+
     render() {
         return (
             <div className="right-side">
                 <div className="der-fl">
                     <div >
                         <p className="tit-ins">Code</p>
-                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" value={this.props.test.code ? this.props.test.code : ""} onChange={this.setCode} />
                     </div>
                     <div >
                         <p className="tit-ins">Description</p>
-                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" value={this.props.test.description ? this.props.test.description : ""} onChange={this.setDesc} />
                     </div>
                     <div >
                         <p className="tit-ins">Status</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.statusOption}
+                                option={this.props.test.status}
                                 status={this.props.isStatusOpen}
                                 menu={this.statuses}
                                 id="resTypes" />
@@ -38,11 +85,11 @@ export class TestsSettings extends Component {
                     </div>
                     <div >
                         <p className="tit-ins">Mailout Lab</p>
-                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" value={this.props.test.mailoutLab ? this.props.test.mailoutLab : ""} onChange={this.setLab} />
                     </div>
                     <div >
                         <p className="tit-ins">Mailout Code</p>
-                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" value={this.props.test.mailoutCode ? this.props.test.mailoutCode : ""} onChange={this.setMailoutCode} />
                     </div>
                 </div>
 
@@ -51,7 +98,7 @@ export class TestsSettings extends Component {
                         <p className="tit-ins">Short stability</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.stabilityOption}
+                                option={this.props.test.shortStability}
                                 status={this.props.isStabOpen}
                                 menu={this.yesno}
                                 id="stability" />
@@ -61,7 +108,7 @@ export class TestsSettings extends Component {
                         <p className="tit-ins">Priority</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.priorityOption}
+                                option={this.props.test.priority}
                                 status={this.props.isPriOpen}
                                 menu={this.yesno}
                                 id="priority" />
@@ -71,7 +118,7 @@ export class TestsSettings extends Component {
                         <p className="tit-ins">Auto Stat</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.autoStatOption}
+                                option={this.props.test.autoStat}
                                 status={this.props.isAutoOpen}
                                 menu={this.yesno}
                                 id="autostat" />
@@ -81,7 +128,7 @@ export class TestsSettings extends Component {
                         <p className="tit-ins">Sendout Critical</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.criticalOption}
+                                option={this.props.test.sendOutCritical}
                                 status={this.props.isCriticalOpen}
                                 menu={this.yesno}
                                 id="critical" />
@@ -89,24 +136,24 @@ export class TestsSettings extends Component {
                     </div>
                     <div >
                         <p className="tit-ins">Centralink Required</p>
-                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" value={this.props.test.centralinkRequired ? this.props.test.centralinkRequired : ""} onChange={this.setCentralink} />
                     </div>
                 </div>
 
                 <div className="der-fl m15">
                     <div >
                         <p className="tit-ins">Specimen Volume</p>
-                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" value={this.props.test.specimenVolume ? this.props.test.specimenVolume : ""} onChange={this.setVolume} />
                     </div>
                     <div >
                         <p className="tit-ins">Specimen Container</p>
-                        <input className="simple-input wiyt" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input wiyt" value={this.props.test.specimenContainer ? this.props.test.specimenContainer : ""} onChange={this.setContainer} />
                     </div>
                     <div >
                         <p className="tit-ins">Shipping Temperature</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.shipOption}
+                                option={this.props.test.shippigTemperature}
                                 status={this.props.isShipOpen}
                                 menu={this.shipping}
                                 id="shipping" />
@@ -120,40 +167,40 @@ export class TestsSettings extends Component {
                             <p className="tit-ins">Specimen Stability</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.comment}
-                                onChange={this.handleChange}
+                                value={this.props.test.specimenStability}
+                                onChange={this.handleStability}
                             ></textarea>
                         </div>
                         <div >
                             <p className="tit-ins">Collection Instructions</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.comment}
-                                onChange={this.handleChange}
+                                value={this.props.test.collectionInstuctions}
+                                onChange={this.handleInstruc}
                             ></textarea>
                         </div>
                         <div >
                             <p className="tit-ins">Rejection Criteria</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.comment}
-                                onChange={this.handleChange}
+                                value={this.props.test.rejectionCriteria}
+                                onChange={this.handleCrit}
                             ></textarea>
                         </div>
                         <div >
                             <p className="tit-ins">Clinical Information</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.comment}
-                                onChange={this.handleChange}
+                                value={this.props.test.clinicalInformation}
+                                onChange={this.handleInfo}
                             ></textarea>
                         </div>
                         <div >
                             <p className="tit-ins">Patient Reparation</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.comment}
-                                onChange={this.handleChange}
+                                value={this.props.test.patientReparation}
+                                onChange={this.handleRepa}
                             ></textarea>
                         </div>
                     </div>
@@ -198,18 +245,18 @@ export class TestsSettings extends Component {
                 <div className="der-fl m15 fle-start">
                     <div className="mar40k">
                         <p className="tit-ins">TAT</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input" value={this.props.test.tat ? this.props.test.tat : ""} onChange={this.setTat} />
                     </div>
                     <div >
                         <p className="tit-ins">Methodology</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input" value={this.props.test.methodology ? this.props.test.methodology : ""} onChange={this.setMet} />
                     </div>
                 </div>
 
                 <p className="side-t m15">Element Definition Deatails</p>
                 <div className="m09">
                     <div className="div300w">
-                        <input className="simple-input div300w" placeholder="code" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input div300w" value={this.props.test.elementDefinition ? this.props.test.elementDefinition : ""} onChange={this.setDef} />
                     </div>
                 </div>
             </div>
@@ -236,11 +283,26 @@ const mapStateToProps = (state) => ({
     isShipOpen: state.dropdownStatus.shipping,
     aoeOption: state.dropdownOption.aoe,
     isAoeReqOpen: state.dropdownStatus.aoe,
+    test: state.chosenTest
 
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = dispatch => ({
+    setCode: (text) => dispatch(setCode(text)),
+    setDesc: (text) => dispatch(setDesc(text)),
+    setLab: (text) => dispatch(setLab(text)),
+    setMailoutCode: (text) => dispatch(setMailoutCode(text)),
+    setCentralink: (text) => dispatch(setCentralink(text)),
+    setVolume: (text) => dispatch(setVolume(text)),
+    setContainer: (text) => dispatch(setContainer(text)),
+    handleStability: (text) => dispatch(handleStability(text)),
+    handleInstruc: (text) => dispatch(handleInstruc(text)),
+    handleCrit: (text) => dispatch(handleCrit(text)),
+    handleInfo: (text) => dispatch(handleInfo(text)),
+    handleRepa: (text) => dispatch(handleRepa(text)),
+    setTat: (text) => dispatch(setTat(text)),
+    setMet: (text) => dispatch(setMet(text)),
+    setDef: (text) => dispatch(setDef(text)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(TestsSettings)

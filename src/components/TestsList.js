@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTable from "react-table";
 import '../table.css';
+import { setTestRelative } from '../store/actions/Test';
 
 
 
@@ -15,7 +16,7 @@ export class TestsList extends Component {
             },
             {
                 Header: 'Description',
-                accessor: 'desc',
+                accessor: 'description',
             },
             
         ];
@@ -24,7 +25,7 @@ export class TestsList extends Component {
     handleRowClick = (state, rowInfo, column, instance) => {
         if (rowInfo) {
             return {
-                onClick: (e, handleOriginal) => this.props.showElement(rowInfo.index, this.props.list[rowInfo.index]),
+                onClick: (e, handleOriginal) => this.props.setTestRelative(rowInfo.index),
                 style: {
                     fontWeight: rowInfo.index === this.props.selected ? '700' : '600',
                     color: rowInfo.index === this.props.selected ? '#1ab394' : '#4e4e4e',
@@ -55,16 +56,19 @@ export class TestsList extends Component {
     render() {
         if (this.props.isLoading) return this.renderList([], `Loading list...`);
         if (this.props.isErrored) return this.renderList([], `Error occurred...`);
-        return this.renderList(this.props.list, `No any elements...`);
+        return this.renderList(this.props.list, `No any tests...`);
     }
 }
 
 const mapStateToProps = (state) => ({
-    
+    selected: state.selectedTestRow,
+    isLoading: state.testsLoading,
+    isErrored: state.testsErrored,
+    list: state.tests,
 })
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = dispatch => ({
+    setTestRelative: (index) => dispatch(setTestRelative(index)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(TestsList)

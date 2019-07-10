@@ -1,0 +1,168 @@
+import API from '../../utils/Api';
+
+
+
+export const getTests = () => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch(setLoading(true));
+            const res = await API.get(`/v1/tests`);
+            dispatch(setChosenTest(res.data[0]));
+            dispatch(setSelectedTestRow(0));
+            dispatch(setLoading(false));
+            dispatch(setTests(res.data));
+        } catch (err) {
+            dispatch(setLoading(false));
+            dispatch(setError(true));
+            console.log(err);
+        }
+    }
+}
+
+export const setTestRelative = (index) => {
+    return async (dispatch, getState) => {
+        const list = getState().tests;
+        dispatch(setMode(false));
+        dispatch(setChosenTest(list[index]));
+        dispatch(setSelectedTestRow(index));
+    }
+}
+
+export const setChosenTest = (obj) => ({
+    type: 'SET_CHOSEN_TEST',
+    obj
+});
+
+export const setSelectedTestRow = (index) => ({
+    type: 'SET_SELECTED_TEST_ROW',
+    index
+});
+
+export const setLoading = (bool) => ({
+    type: 'SET_TESTS_LOAD',
+    bool
+});
+
+export const setError = (bool) => ({
+    type: 'SET_TESTS_ERROR',
+    bool
+});
+
+export const setTests = (list) => ({
+    type: 'SET_TESTS',
+    list
+});
+
+export const setMode = (bool) => ({
+    type: 'SET_CREATE_MODE_TEST',
+    bool
+});
+
+export const setCode = (text) => ({
+    type: 'SET_TEST_CODE',
+    text
+});
+
+export const setDesc = (text) => ({
+    type: 'SET_DESC_TEST',
+    text
+});
+
+export const setLab = (text) => ({
+    type: 'SET_LAB_TEST',
+    text
+});
+
+export const setMailoutCode = (text) => ({
+    type: 'SET_MAILOUTCODE_TEST',
+    text
+});
+
+export const setCentralink = (text) => ({
+    type: 'SET_CENTRAL_TEST',
+    text
+});
+
+export const setVolume = (text) => ({
+    type: 'SET_VOLUME_TEST',
+    text
+});
+
+export const setContainer = (text) => ({
+    type: 'SET_CONTA_TEST',
+    text
+});
+
+export const handleStability = (text) => ({
+    type: 'SET_STABILITY_TEST',
+    text
+});
+
+export const handleCrit = (text) => ({
+    type: 'SET_CRIT_TEST',
+    text
+});
+
+export const handleInfo = (text) => ({
+    type: 'SET_INFO_TEST',
+    text
+});
+
+export const handleRepa = (text) => ({
+    type: 'SET_REPA_TEST',
+    text
+});
+
+export const setTat = (text) => ({
+    type: 'SET_TAT_TEST',
+    text
+});
+
+export const setMet = (text) => ({
+    type: 'SET_MET_TEST',
+    text
+});
+
+export const setDef = (text) => ({
+    type: 'SET_DEF_TEST',
+    text
+});
+
+export const handleInstruc = (text) => ({
+    type: 'SET_INSTRUC_TEST',
+    text
+});
+
+
+
+
+
+
+
+
+
+// export const createCpt = (cpt) => {
+//     return async (dispatch, getState) => {
+//         try {
+//             const res = await API.post(`/v1/create-cpt`, cpt);
+//             dispatch(setChosenCpt(res.data[0]));
+//             dispatch(setSelectedCptRow(0));
+//             dispatch(setCpts(res.data));
+//             dispatch(setMode(false));
+//         } catch (err) {
+//             dispatch(setError(true));
+//             console.log(err);
+//         }
+//     }
+// }
+
+// export const updateCpt = (cpt) => {
+//     return async (dispatch, getState) => {
+//         try {
+//             const res = await API.post(`/v1/update-cpt`, cpt);
+//             dispatch(setCpts(res.data));
+//         } catch (err) {
+//             console.log(err);
+//         }
+//     }
+// }

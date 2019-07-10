@@ -12,9 +12,13 @@ import { code, desc, specList } from './Specs';
 import { instrums } from './Instrums';
 import { deps } from './Deps';
 import { checkbox } from './CheckBox';
+import { tests, testsLoading, testsErrored, chosenTest, selectedTestRow } from './Tests';
 
 
 const RootReducer = combineReducers({
+    selectedTestRow,
+    chosenTest,
+
     loginSpinner,
     notificationCss,
     notificationText,
@@ -41,7 +45,11 @@ const RootReducer = combineReducers({
     specList,
 
     instrums,
-    deps
+    deps,
+
+    tests,
+    testsLoading,
+    testsErrored,
 });
 
 
