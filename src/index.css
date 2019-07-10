@@ -2185,3 +2185,22 @@ p.logo-text:hover {
     width: 120px;
     height: 35px;
 }
+
+.create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 17px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    background: #ebae53;
+    color: #fff;
+    width: 120px;
+    border-radius: 3px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.create:active {
+    background: #e4a74c;
+}

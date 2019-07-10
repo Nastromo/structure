@@ -12,10 +12,11 @@ import { code, desc, specList } from './Specs';
 import { instrums } from './Instrums';
 import { deps } from './Deps';
 import { checkbox } from './CheckBox';
-import { tests, testsLoading, testsErrored, chosenTest, selectedTestRow } from './Tests';
+import { tests, testsLoading, testsErrored, chosenTest, selectedTestRow, isCreateMode } from './Tests';
 
 
 const RootReducer = combineReducers({
+    isCreateMode,
     selectedTestRow,
     chosenTest,
 

@@ -58,6 +58,14 @@ export const setMode = (bool) => ({
     bool
 });
 
+export const setCreateMode = () => {
+    return async (dispatch, getState) => {
+        dispatch(setMode(true));
+        dispatch(setChosenTest({}));
+        dispatch(setSelectedTestRow(0));
+    }
+};
+
 export const setCode = (text) => ({
     type: 'SET_TEST_CODE',
     text

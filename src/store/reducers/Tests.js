@@ -25,6 +25,15 @@ export const testsErrored = (state = false, action) => {
     }
 }
 
+export const isCreateMode = (state = false, action) => {
+    switch (action.type) {
+        case `SET_CREATE_MODE_TEST`:
+            return action.bool;
+
+        default: return state;
+    }
+}
+
 export const chosenTest = (state = {}, action) => {
     let newState;
     switch (action.type) {
@@ -113,8 +122,6 @@ export const chosenTest = (state = {}, action) => {
             newState = JSON.parse(JSON.stringify(state));
             newState.collectionInstuctions = action.text;
             return newState;
-
-
 
         default: return state;
     }

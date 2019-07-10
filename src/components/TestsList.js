@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTable from "react-table";
 import '../table.css';
-import { setTestRelative } from '../store/actions/Test';
+import { setTestRelative, setCreateMode } from '../store/actions/Test';
 
 
 
 export class TestsList extends Component {
-    
+
     initColumns = () => {
         return [
             {
@@ -18,7 +18,7 @@ export class TestsList extends Component {
                 Header: 'Description',
                 accessor: 'description',
             },
-            
+
         ];
     }
 
@@ -37,9 +37,14 @@ export class TestsList extends Component {
         }
     }
 
+    handleCreate = () => {
+        this.props.setCreateMode();
+    }
+
     renderList = (list, text) => {
         return (
             <div className="content-table small-t">
+                <div onClick={this.handleCreate} className="create">Create</div>
                 <ReactTable
                     data={list}
                     getTdProps={this.handleRowClick}
@@ -69,6 +74,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
     setTestRelative: (index) => dispatch(setTestRelative(index)),
+    setCreateMode: () => dispatch(setCreateMode()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TestsList)
