@@ -35,6 +35,12 @@ export const setOption = (obj) => {
                 obj
             }
 
+            case `igs`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_SET',
+                obj
+            }
+
         default: return ({
             type: 'SET_DROP_DOWN_OPTION',
             obj

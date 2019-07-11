@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTable from "react-table";
 import '../table.css';
+import { setSetRelative, setCreateMode } from '../store/actions/Sets';
 
 
 
@@ -14,7 +15,7 @@ export class OrderList extends Component {
             },
             {
                 Header: 'Description',
-                accessor: 'desc',
+                accessor: 'description',
             }
         ];
     }
@@ -22,7 +23,7 @@ export class OrderList extends Component {
     handleRowClick = (state, rowInfo, column, instance) => {
         if (rowInfo) {
             return {
-                onClick: (e, handleOriginal) => this.props.showElement(rowInfo.index, this.props.list[rowInfo.index]),
+                onClick: (e, handleOriginal) => this.props.setSetRelative(rowInfo.index),
                 style: {
                     fontWeight: rowInfo.index === this.props.selected ? '700' : '600',
                     color: rowInfo.index === this.props.selected ? '#1ab394' : '#4e4e4e',
@@ -34,9 +35,14 @@ export class OrderList extends Component {
         }
     }
 
+    handleCreate = () => {
+        this.props.setCreateMode();
+    }
+
     renderList = (list, text) => {
         return (
             <div className="content-table small-t">
+                <div onClick={this.handleCreate} className="sub-btn-er create">Create</div>
                 <ReactTable
                     data={list}
                     getTdProps={this.handleRowClick}
@@ -58,11 +64,16 @@ export class OrderList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+    selected: state.selectedSet,
+    isLoading: state.setsLoading,
+    isErrored: state.setsError,
+    list: state.sets,
+    set: state.chosenSet,
 })
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = dispatch => ({
+    setSetRelative: (index) => dispatch(setSetRelative(index)),
+    setCreateMode: (obj) => dispatch(setCreateMode(obj)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderList)

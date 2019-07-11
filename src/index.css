@@ -2137,7 +2137,7 @@ p.logo-text:hover {
 }
 
 .just-end {
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .mar-ggee {
@@ -2145,7 +2145,7 @@ p.logo-text:hover {
 }
 
 .ert-t {
-    flex-basis: 50%;
+    flex-basis: 35%;
 }
 
 .mar-gh {
@@ -2214,4 +2214,37 @@ p.logo-text:hover {
     width: 130px;
     font-weight: 700;
     padding: 6px 0;
+}
+
+.tag-bl-e {
+    padding: 5px 8px;
+    background: #51aaf3;
+    color: #fff;
+    font-size: 0.84rem;
+    font-weight: 700;
+    margin: 0 10px 0 0;
+}
+
+.fle-sdfr {
+    display: flex;
+}
+
+.mart-ty {
+    margin: 0 10px 0 0;
+}
+
+.ascrol-n {
+    height: 120px;
+    overflow: scroll;
+}
+
+.fle-cli-ad {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: beige;
+    padding: 0 0 0 15px;
+    margin: 4px 0;
+    font-size: 0.84rem;
+    font-weight: 700;
 }

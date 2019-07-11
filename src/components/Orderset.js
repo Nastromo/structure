@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OrderList from './OrderList';
 import OrderSettings from './OrderSettings';
-
+import { getSets } from '../store/actions/Sets';
 
 
 
 export class Orderset extends Component {
+    componentDidMount() {
+        this.props.getSets();
+    }
 
     render() {
         return (
@@ -22,8 +25,8 @@ const mapStateToProps = (state) => ({
 
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = dispatch => ({
+    getSets: () => dispatch(getSets()),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Orderset)
