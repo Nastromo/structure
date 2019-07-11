@@ -2204,3 +2204,14 @@ p.logo-text:hover {
 .create:active {
     background: #e4a74c;
 }
+
+.fke-kef-s {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wi130g {
+    width: 130px;
+    font-weight: 700;
+    padding: 6px 0;
+}

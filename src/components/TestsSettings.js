@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropDown from './DropDown';
-import { setCode, setDesc, setLab, setMailoutCode, setCentralink, setVolume, setContainer, handleStability, handleInstruc, handleCrit, handleInfo, handleRepa, setTat, setMet, setDef } from '../store/actions/Test';
+import { setCode, setDesc, setLab, setMailoutCode, setCentralink, setVolume, setContainer, handleStability, handleInstruc, handleCrit, handleInfo, handleRepa, setTat, setMet, setDef, createTest, updateTest } from '../store/actions/Test';
 
 
 
@@ -61,9 +61,22 @@ export class TestsSettings extends Component {
         this.props.setDef(e.target.value);
     }
 
+    handleCreate = () => {
+        this.props.createTest(this.props.test);
+    }
+
+    handleUpdate = () => {
+        this.props.updateTest(this.props.test);
+    }
+
     render() {
         return (
             <div className="right-side">
+                <div className="fke-kef-s">
+                    { this.props.isCreateMode ? <div onClick={this.handleCreate} className="create">Create</div> :
+                <div onClick={this.handleUpdate} className="green-btn wi130g">Update</div> } 
+                    
+                </div>
                 <div className="der-fl">
                     <div >
                         <p className="tit-ins">Code</p>
@@ -167,7 +180,7 @@ export class TestsSettings extends Component {
                             <p className="tit-ins">Specimen Stability</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.test.specimenStability}
+                                value={this.props.test.specimenStability ? this.props.test.specimenStability : ""}
                                 onChange={this.handleStability}
                             ></textarea>
                         </div>
@@ -175,7 +188,7 @@ export class TestsSettings extends Component {
                             <p className="tit-ins">Collection Instructions</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.test.collectionInstuctions}
+                                value={this.props.test.collectionInstuctions ? this.props.test.collectionInstuctions : ""}
                                 onChange={this.handleInstruc}
                             ></textarea>
                         </div>
@@ -183,7 +196,7 @@ export class TestsSettings extends Component {
                             <p className="tit-ins">Rejection Criteria</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.test.rejectionCriteria}
+                                value={this.props.test.rejectionCriteria ? this.props.test.rejectionCriteria : ""}
                                 onChange={this.handleCrit}
                             ></textarea>
                         </div>
@@ -191,7 +204,7 @@ export class TestsSettings extends Component {
                             <p className="tit-ins">Clinical Information</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.test.clinicalInformation}
+                                value={this.props.test.clinicalInformation ? this.props.test.clinicalInformation : ""}
                                 onChange={this.handleInfo}
                             ></textarea>
                         </div>
@@ -199,7 +212,7 @@ export class TestsSettings extends Component {
                             <p className="tit-ins">Patient Reparation</p>
                             <textarea
                                 className="gross-other"
-                                value={this.props.test.patientReparation}
+                                value={this.props.test.patientReparation ? this.props.test.patientReparation : ""}
                                 onChange={this.handleRepa}
                             ></textarea>
                         </div>
@@ -283,7 +296,8 @@ const mapStateToProps = (state) => ({
     isShipOpen: state.dropdownStatus.shipping,
     aoeOption: state.dropdownOption.aoe,
     isAoeReqOpen: state.dropdownStatus.aoe,
-    test: state.chosenTest
+    test: state.chosenTest,
+    isCreateMode: state.isCreateMode
 
 })
 
@@ -303,6 +317,8 @@ const mapDispatchToProps = dispatch => ({
     setTat: (text) => dispatch(setTat(text)),
     setMet: (text) => dispatch(setMet(text)),
     setDef: (text) => dispatch(setDef(text)),
+    createTest: (obj) => dispatch(createTest(obj)),
+    updateTest: (obj) => dispatch(updateTest(obj)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TestsSettings)

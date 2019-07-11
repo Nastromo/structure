@@ -141,36 +141,28 @@ export const handleInstruc = (text) => ({
     text
 });
 
+export const createTest = (test) => {
+    return async (dispatch, getState) => {
+        try {
+            const res = await API.post(`/v1/create-test`, test);
+            dispatch(setChosenTest(res.data[0]));
+            dispatch(setSelectedTestRow(0));
+            dispatch(setTests(res.data));
+            dispatch(setMode(false));
+        } catch (err) {
+            dispatch(setError(true));
+            console.log(err);
+        }
+    }
+}
 
-
-
-
-
-
-
-
-// export const createCpt = (cpt) => {
-//     return async (dispatch, getState) => {
-//         try {
-//             const res = await API.post(`/v1/create-cpt`, cpt);
-//             dispatch(setChosenCpt(res.data[0]));
-//             dispatch(setSelectedCptRow(0));
-//             dispatch(setCpts(res.data));
-//             dispatch(setMode(false));
-//         } catch (err) {
-//             dispatch(setError(true));
-//             console.log(err);
-//         }
-//     }
-// }
-
-// export const updateCpt = (cpt) => {
-//     return async (dispatch, getState) => {
-//         try {
-//             const res = await API.post(`/v1/update-cpt`, cpt);
-//             dispatch(setCpts(res.data));
-//         } catch (err) {
-//             console.log(err);
-//         }
-//     }
-// }
+export const updateTest = (test) => {
+    return async (dispatch, getState) => {
+        try {
+            const res = await API.post(`/v1/update-test`, test);
+            dispatch(setTests(res.data));
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}

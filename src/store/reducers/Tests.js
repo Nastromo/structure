@@ -29,7 +29,7 @@ export const isCreateMode = (state = false, action) => {
     switch (action.type) {
         case `SET_CREATE_MODE_TEST`:
             return action.bool;
-
+    
         default: return state;
     }
 }
