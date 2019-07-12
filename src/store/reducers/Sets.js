@@ -61,8 +61,26 @@ export const client = (state = "", action) => {
     }
 }
 
+export const loadingRow = (state = false, action) => {
+    switch (action.type) {
+        case `SHOW_LOADING_ROW`:
+            return action.bool;
+
+        default: return state;
+    }
+}
+
+export const testsDropdown = (state = [], action) => {
+    switch (action.type) {
+        case `SHOW_TESTS_FOR_DROP`:
+            return action.list;
+
+        default: return state;
+    }
+}
+
 export const chosenSet = (state = {}, action) => {
-    let newState, clients;
+    let newState, clients, set;
     switch (action.type) {
         case `SET_CHOSEN_SET`:
             return action.obj;
@@ -82,9 +100,23 @@ export const chosenSet = (state = {}, action) => {
             newState.specimenRequirements = action.text;
             return newState;
 
+        case `ADD_TEST_ROW`:
+            newState = JSON.parse(JSON.stringify(state));
+            set = JSON.parse(newState.set ? newState.set : "[]");
+            set.push(action.obj);
+            newState.set = JSON.stringify(set);
+            return newState;
+
+        case `DEL_TEST_ROW`:
+            newState = JSON.parse(JSON.stringify(state));
+            set = JSON.parse(newState.set ? newState.set : "[]");
+            set.splice(action.index, 1);
+            newState.set = JSON.stringify(set);
+            return newState;
+
         case `ADD_CLIENT`:
             newState = JSON.parse(JSON.stringify(state));
-            clients = JSON.parse(newState.client);
+            clients = JSON.parse(newState.client ? newState.client : "[]");
             clients.push(action.text);
             newState.client = JSON.stringify(clients);
             return newState;

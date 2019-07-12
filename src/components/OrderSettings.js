@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CheckBox from './Checkbox';
 import DropDown from './DropDown';
-import { setCode, setDesc, setSpec, setClient, getTestCodes, addClient, delClient } from '../store/actions/Sets';
+import { setCode, setDesc, setSpec, setClient, getTestCodes, addClient, delClient, addTest, delTest, createSet, updateSet } from '../store/actions/Sets';
 
 
 
@@ -53,7 +53,53 @@ export class OrderSettings extends Component {
     delClient = (e) => {
         this.props.delClient(Number(e.target.id));
     }
-    
+
+    addTest = (e) => {
+        this.props.addTest(Number(e.target.id));
+    }
+
+    returnTestsList = (e) => {
+        const list = this.props.testsDropdown;
+        return (
+            <div className="drop-tests">
+                {list.map((item, i) => {
+                    return <p onClick={this.addTest} id={i} key={i} className="it-des-it">{`${item.code} ${item.description}`}</p>
+                })}
+            </div>
+        )
+    }
+
+    returnTestsRows = () => {
+        const chosenSet = this.props.set;
+        const list = JSON.parse(chosenSet.set ? chosenSet.set : "[]");
+        return (
+            <div className="sceool-codes">
+                {list.map((item, i) => {
+                    return (
+                        <div key={i} className="fle-cli-ad">
+                            <div className="dertui">
+                                <p id="eefg">{item.code}</p>
+                                <p>{item.description}</p>
+                            </div>
+                            <div onClick={this.delTest} id={i} className="delete-sml"></div>
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+
+    delTest = (e) => {
+        this.props.delTest(Number(e.target.id));
+    }
+
+    handleCreate = () => {
+        this.props.createSet(this.props.set);
+    }
+
+    handleUpdate = () => {
+        this.props.updateSet(this.props.set);
+    }
 
     render() {
         return (
@@ -77,8 +123,10 @@ export class OrderSettings extends Component {
                     >
                     </textarea>
 
-                    <div className="felx-fds mart33fd">
+                    <div className="felx-fds mart33fd relativeff">
                         <input placeholder="Test code" className="simple-input mared" type="text" value={this.props.testCodeOnSet} onChange={this.handleCode} />
+                        {this.props.loadingRow ? <div className="pos-abs">Loading...</div> : null}
+                        {this.props.testsDropdown.length > 0 ? this.returnTestsList() : null}
                         <div onClick={this.addCode} className="add-btn">add</div>
                     </div>
                     <div className="gle-fgre">
@@ -86,9 +134,8 @@ export class OrderSettings extends Component {
                         <p id="dfer" className="tit-ins">Test description</p>
                         <p className="tit-ins">Action</p>
                     </div>
-                    <div className="sceool-codes">
+                    {this.returnTestsRows()}
 
-                    </div>
                     <CheckBox status={this.props.set.isAssignToAll} title="Assign to all order sets" id="orderSet" />
                 </div>
 
@@ -128,7 +175,9 @@ export class OrderSettings extends Component {
                     {this.returnClients()}
                     <div className="fger-ffr">
                         {this.props.set.isDeleted ? <div className="inc-btn-d">Inactive</div> : null}
-                        {this.props.isCreateMode ? <div className="sub-btn-er create">Create</div> : <div className="sub-btn-er">Update</div>}
+                        {this.props.isCreateMode ? 
+                        <div onClick={this.handleCreate} className="sub-btn-er create">Create</div> : 
+                        <div onClick={this.handleUpdate} className="sub-btn-er">Update</div>}
 
 
                     </div>
@@ -149,6 +198,8 @@ const mapStateToProps = (state) => ({
     isCreateMode: state.isCreateModeSet,
     testCodeOnSet: state.testCodeOnSet,
     client: state.client,
+    loadingRow: state.loadingRow,
+    testsDropdown: state.testsDropdown
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -159,6 +210,10 @@ const mapDispatchToProps = dispatch => ({
     getTestCodes: (text) => dispatch(getTestCodes(text)),
     addClient: (text) => dispatch(addClient(text)),
     delClient: (text) => dispatch(delClient(text)),
+    addTest: (index) => dispatch(addTest(index)),
+    delTest: (index) => dispatch(delTest(index)),
+    createSet: (obj) => dispatch(createSet(obj)),
+    updateSet: (obj) => dispatch(updateSet(obj)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderSettings)

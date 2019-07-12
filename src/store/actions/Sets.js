@@ -55,20 +55,52 @@ export const setSpec = (text) => ({
     text
 });
 
-export const getTestCodes = (char) => {
+export const showLoadingRow = (bool) => ({
+    type: 'SHOW_LOADING_ROW',
+    bool
+});
+
+export const setTestListForDropdown = (list) => ({
+    type: 'SHOW_TESTS_FOR_DROP',
+    list
+});
+
+export const addTestRow = (obj) => ({
+    type: 'ADD_TEST_ROW',
+    obj
+});
+
+export const delTest = (index) => ({
+    type: 'DEL_TEST_ROW',
+    index
+});
+
+export const addTest = (index) => {
     return async (dispatch, getState) => {
-        dispatch(setTestCode(char));
-
-    const res = await API.get(`/v1/ordersets`);
-
+        const tests = getState().testsDropdown;
+        dispatch(setTestListForDropdown([]));
+        dispatch(setTestCode(""));
+        dispatch(addTestRow({
+            code: tests[index].code,
+            description: tests[index].description,
+        }));
     }
 }
 
-
-
-
-
-
+export const getTestCodes = (word) => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch(setTestCode(word));
+            dispatch(showLoadingRow(true));
+            const res = await API.get(`/v1/tests?key=${word}`);
+            dispatch(showLoadingRow(false));
+            dispatch(setTestListForDropdown(res.data));
+        } catch (err) {
+            dispatch(showLoadingRow(false));
+            console.log(err);
+        }
+    }
+}
 
 export const getSets = () => {
     return async (dispatch, getState) => {
@@ -114,10 +146,10 @@ export const setCreateMode = () => {
     }
 };
 
-export const createSet = (test) => {
+export const createSet = (set) => {
     return async (dispatch, getState) => {
         try {
-            const res = await API.post(`/v1/create-set`, test);
+            const res = await API.post(`/v1/create-set`, set);
             dispatch(setChosenSet(res.data[0]));
             dispatch(setSelectedSetRow(0));
             dispatch(setSets(res.data));
@@ -133,6 +165,7 @@ export const updateSet = (set) => {
     return async (dispatch, getState) => {
         try {
             const res = await API.post(`/v1/update-set`, set);
+            dispatch(setSelectedSetRow(0));
             dispatch(setSets(res.data));
         } catch (err) {
             console.log(err);

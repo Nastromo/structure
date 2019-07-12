@@ -13,10 +13,13 @@ import { instrums } from './Instrums';
 import { deps } from './Deps';
 import { checkbox } from './CheckBox';
 import { tests, testsLoading, testsErrored, chosenTest, selectedTestRow, isCreateMode } from './Tests';
-import { sets, setsLoading, setsError, selectedSet, isCreateModeSet, chosenSet, client } from './Sets';
+import { sets, setsLoading, setsError, selectedSet, isCreateModeSet, chosenSet, client, loadingRow, testsDropdown, testCodeOnSet} from './Sets';
 
 
 const RootReducer = combineReducers({
+    testCodeOnSet,
+    testsDropdown,
+    loadingRow,
     client,
     sets,
     setsLoading,
