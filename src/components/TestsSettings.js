@@ -73,9 +73,8 @@ export class TestsSettings extends Component {
         return (
             <div className="right-side">
                 <div className="fke-kef-s">
-                    { this.props.isCreateMode ? <div onClick={this.handleCreate} className="create">Create</div> :
-                <div onClick={this.handleUpdate} className="green-btn wi130g">Update</div> } 
-                    
+                    {this.props.isCreateMode ? <div onClick={this.handleCreate} className="create">Create</div> :
+                        <div onClick={this.handleUpdate} className="green-btn wi130g">Update</div>}
                 </div>
                 <div className="der-fl">
                     <div >

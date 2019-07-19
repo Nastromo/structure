@@ -78,6 +78,12 @@ export const dropdownStatus = (state = {}, action) => {
                 newState = JSON.parse(JSON.stringify(state));
                 newState.perm = action.obj.status;
                 return newState;
+            case `departments`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.departments = action.obj.status;
+                return newState;
+
+
             default: return state;
         }
     } else {

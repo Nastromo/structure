@@ -1893,8 +1893,20 @@ p.logo-text:hover {
 
 .del-save {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.alig-righd {
     justify-content: space-between;
-    align-items: flex-start;
+}
+
+.mar-r-gh {
+    margin: 0 10px 0 0;
+}
+
+.mar-ggj-l {
+    margin: 0 50px 0 0;
 }
 
 #deleteIns {

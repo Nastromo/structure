@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropDown from './DropDown';
 import { setSerial } from '../store/actions/Instrument';
-import SubmitButton from './SubmitButton';
 import InstumentCodes from './InstumentCodes';
-import { addInstrum, delInstrum } from '../store/actions/Instrums';
+import { addInstrum, delInstrum, changeType, getDeps, handleCreate, handleUpdate } from '../store/actions/Instrums';
 
 
 
 export class InstrumentSettings extends Component {
+    componentDidMount() {
+        this.props.getDeps();
+    }
+
     handleChange = (e) => {
         this.props.setSerial(e.target.value);
     }
@@ -27,30 +30,26 @@ export class InstrumentSettings extends Component {
     }
 
     render() {
+        const list = JSON.parse(this.props.instrum.instruments ? this.props.instrum.instruments : "[]");
+
         return (
             <div className="right-side">
-                <div className="del-save">
+                <div className="del-save alig-righd">
                     <p className="side-t">Instrument Definition Deatails</p>
-                    <div className="right-bi-n">
-                        <div id="deleteIns" className="save-s">
-                            <SubmitButton status={this.props.deleteStatus} text="Delete" onClick={this.delete} />
-                        </div>
-                        <div className="save-s">
-                            <SubmitButton status={this.props.saveStatus} text="Save" onClick={this.save} />
-                        </div>
-                    </div>
+                    {this.props.isCreateMode ? <div onClick={this.props.handleCreate} className="create">Create</div> :
+                        <div onClick={this.props.handleUpdate} className="green-btn wi130g">Update</div>}
                 </div>
 
                 <div className="flex-inst">
                     <div className="red-poe">
                         <div className="dis33">
                             <p className="tit-ins">Instrument Type</p>
-                            <input className="simple-input wi400p" type="text" value={this.props.serial} onChange={this.handleChange} />
+                            <input className="simple-input wi400p" type="text" value={this.props.instrum.type ? this.props.instrum.type : ""} onChange={this.props.changeType} />
                         </div>
                         <div className="dis33">
                             <p className="tit-ins">Department</p>
                             <DropDown
-                                option={this.props.chosenDepartment}
+                                option={this.props.instrum.department}
                                 status={this.props.isDepOpen}
                                 menu={this.props.departments}
                                 id="departments" />
@@ -64,7 +63,7 @@ export class InstrumentSettings extends Component {
                         </div>
                         <div className="scroll-150">
                             {
-                                this.props.list.map((item, i) => {
+                                list.map((item, i) => {
                                     return (
                                         <div key={i} className="back-lin">
                                             <div className="fle-tt">
@@ -87,16 +86,21 @@ export class InstrumentSettings extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    isCreateMode: state.isInsCreateMode,
+    instrum: state.instrum,
+    isDepOpen: state.dropdownStatus.departments,
     serial: state.instrument.serial,
-    departments: [],
-    instrumTypes: [],
-    list: state.instrums
+    departments: state.departaments,
 })
 
 const mapDispatchToProps = dispatch => ({
     setSerial: (text) => dispatch(setSerial(text)),
     addInstrum: (obj) => dispatch(addInstrum(obj)),
     delInstrum: (index) => dispatch(delInstrum(index)),
+    changeType: (e) => dispatch(changeType(e)),
+    getDeps: () => dispatch(getDeps()),
+    handleCreate: () => dispatch(handleCreate()),
+    handleUpdate: () => dispatch(handleUpdate()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstrumentSettings)

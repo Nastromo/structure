@@ -43,14 +43,15 @@ export class ElementSettings extends Component {
         if (option === `Instrument`) {
             return (
                 <div className="del-save">
-                    <div className="div200w">
+                    <p className="side-t mar-r-gh">Autofinalize</p>
+                    <div className="div200w mar-ggj-l">
                         <DropDown
                             option={this.props.finalize}
                             status={this.props.isFinalizeOpen}
                             menu={this.alergy}
                             id="finalize" />
                     </div>
-                    <p className="side-t">Hold Criteria</p>
+                    <p className="side-t mar-r-gh">Hold Criteria</p>
                     <div className="right-bi-n marg10-n">
                         <div id="deleteIns" className="save-s">
                             <input className="simple-input" type="text" placeholder="Low" value={this.props.low} onChange={this.handleChange} />
@@ -90,7 +91,7 @@ export class ElementSettings extends Component {
     showNormalRanges = (list) => {
         return list.map((item, i) => {
             return (
-                <div className="flex-it">
+                <div key={i} className="flex-it">
                     <div key={i} className="flex-inst def-item marg-ri">
                         <div className="item-rang">{item.ageFrom}</div>
                         <div className="item-rang">{item.ageTo}</div>
@@ -108,7 +109,7 @@ export class ElementSettings extends Component {
         this.props.addRanges({
             ageFrom: this.ageFrom.value,
             ageTo: this.ageTo.value,
-            gender: this.gender.value,
+            gender: this.props.genderNorm,
             low: this.low.value,
             high: this.high.value,
         });
@@ -121,7 +122,7 @@ export class ElementSettings extends Component {
     showCriticalRanges = (list) => {
         return list.map((item, i) => {
             return (
-                <div className="flex-it">
+                <div key={i} className="flex-it">
                     <div key={i} className="flex-inst def-item marg-ri">
                         <div className="item-rang">{item.ageFrom}</div>
                         <div className="item-rang">{item.ageTo}</div>
@@ -139,7 +140,7 @@ export class ElementSettings extends Component {
         this.props.addCriRanges({
             ageFrom: this.ageFromC.value,
             ageTo: this.ageToC.value,
-            gender: this.genderC.value,
+            gender: this.props.genderCrit,
             low: this.lowC.value,
             high: this.highC.value,
         });

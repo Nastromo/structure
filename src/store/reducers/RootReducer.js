@@ -9,7 +9,7 @@ import { defineList } from './AddDef';
 import { normalRangesList } from './NormalRanges';
 import { criticalRangesList } from './CriticalRanges';
 import { code, desc, specList } from './Specs';
-import { instrums } from './Instrums';
+import { instrums, instrum, activeInstrumRow, departaments, isInsCreateMode } from './Instrums';
 import { deps } from './Deps';
 import { checkbox } from './CheckBox';
 import { tests, testsLoading, testsErrored, chosenTest, selectedTestRow, isCreateMode } from './Tests';
@@ -17,6 +17,10 @@ import { sets, setsLoading, setsError, selectedSet, isCreateModeSet, chosenSet, 
 
 
 const RootReducer = combineReducers({
+    isInsCreateMode,
+    departaments,
+    activeInstrumRow,
+    instrum,
     testCodeOnSet,
     testsDropdown,
     loadingRow,
