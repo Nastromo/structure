@@ -19,10 +19,8 @@ export const desc = (state = ``, action) => {
 export const specList = (state = [], action) => {
     let newState;
     switch (action.type) {
-        case `ADD_SPEC`:
-            newState = JSON.parse(JSON.stringify(state));
-            newState.push(action.obj)
-            return newState;
+        case `SHOW_SPECS`:
+            return action.list;
 
         case `DEL_SPEC`:
             console.log(action.index)

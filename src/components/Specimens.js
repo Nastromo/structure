@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCode, setDesc, addSpec, delSpec } from '../store/actions/Specs';
+import { setCode, setDesc, createSpec, removeSpec, getSpecs } from '../store/actions/Specs';
 
 
 
 
 export class Specimens extends Component {
+    componentDidMount() {
+        this.props.getSpecs();
+    }
+
     handleCode = (e) => {
         this.props.setCode(e.target.value);
     }
@@ -15,22 +19,22 @@ export class Specimens extends Component {
     }
 
     addSpec = () => {
-        this.props.addSpec({
+        this.props.createSpec({
             code: this.props.code,
-            desc: this.props.desc
+            description: this.props.desc
         });
         this.props.setCode(``);
         this.props.setDesc(``);
     }
 
     delSpec = (e) => {
-        this.props.delSpec(Number(e.target.id));
+        this.props.removeSpec(Number(e.target.id));
     }
 
-    rawClick = (e) => {
-        this.props.setCode(this.props.list[Number(e.target.id)].code);
-        this.props.setDesc(this.props.list[Number(e.target.id)].desc);
-    }
+    // rawClick = (e) => {
+    //     this.props.setCode(this.props.list[Number(e.target.id)].code);
+    //     this.props.setDesc(this.props.list[Number(e.target.id)].desc);
+    // }
 
     render() {
         return (
@@ -48,8 +52,8 @@ export class Specimens extends Component {
                                 return (
                                     <div key={i} id={i} onClick={this.rawClick} className="item-spec-l">
                                         <p className="code-pp">{item.code}</p>
-                                        <p className="desc-pp">{item.desc}</p>
-                                        <div id={i} onClick={this.delSpec} className="del-all">del</div>
+                                        <p className="desc-pp">{item.description}</p>
+                                        <div id={item.id} onClick={this.delSpec} className="del-all">del</div>
                                     </div>
                                 )
                             })
@@ -70,8 +74,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
     setCode: (text) => dispatch(setCode(text)),
     setDesc: (text) => dispatch(setDesc(text)),
-    addSpec: (obj) => dispatch(addSpec(obj)),
-    delSpec: (index) => dispatch(delSpec(index)),
+    createSpec: (obj) => dispatch(createSpec(obj)),
+    removeSpec: (id) => dispatch(removeSpec(id)),
+    getSpecs: () => dispatch(getSpecs()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Specimens)
