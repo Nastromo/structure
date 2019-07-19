@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addDep, delDep } from '../store/actions/Deps';
+import { createDep, removeDep, getDeps } from '../store/actions/Deps';
 
 
 export class Departments extends Component {
+    componentDidMount() {
+        this.props.getDeps();
+    }
+
     addDep = (e) => {
         if (this.name) {
-            this.props.addDep(this.name.value);
+            this.props.createDep(this.name.value);
         }
     }
 
     delDep = (e) => {
-        this.props.delDep(Number(e.target.id));
+        this.props.removeDep(Number(e.target.id));
     }
 
     render() {
@@ -28,8 +32,8 @@ export class Departments extends Component {
                             this.props.list.map((item, i) => {
                                 return (
                                     <div key={i} className="item-spec-l">
-                                        <p className="code-pp">{item}</p>
-                                        <div id={i} onClick={this.delDep} className="del-all">del</div>
+                                        <p className="code-pp">{item.name}</p>
+                                        <div id={item.id} onClick={this.delDep} className="del-all">del</div>
                                     </div>
                                 )
                             })
@@ -48,8 +52,9 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = dispatch => ({
-    addDep: (text) => dispatch(addDep(text)),
-    delDep: (index) => dispatch(delDep(index)),
+    createDep: (text) => dispatch(createDep(text)),
+    removeDep: (id) => dispatch(removeDep(id)),
+    getDeps: () => dispatch(getDeps()),
 })
 
 

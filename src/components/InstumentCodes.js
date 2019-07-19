@@ -9,7 +9,7 @@ export class InstrumentsCodes extends Component {
     initColumns = () => {
         return [
             {
-                Header: 'Test Code',
+                Header: 'Element Code',
                 accessor: 'code',
                 style: {
                     textAlign: 'left',

@@ -1,10 +1,8 @@
 export const deps = (state = [], action) => {
     let newState;
     switch (action.type) {
-        case `ADD_DEP`:
-            newState = JSON.parse(JSON.stringify(state));
-            newState.push(action.text);
-            return newState;
+        case `SHOW_DEPS`:
+            return action.list;
 
         case `DEL_DEP`:
             newState = JSON.parse(JSON.stringify(state));
