@@ -47,6 +47,50 @@ export const setOption = (obj) => {
                 obj
             }
 
+        case `instrumentType`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_ELEM',
+                obj
+            }
+
+        case `departament`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_ELEM',
+                obj
+            }
+
+        case `resultTypes`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_ELEM',
+                obj
+            }
+
+        case `alergy`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_ELEM',
+                obj
+            }
+
+        case `drug`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_ELEM',
+                obj
+            }
+
+        case `alpha`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_ELEM',
+                obj
+            }
+
+        case `finalize`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_ELEM',
+                obj
+            }
+
+
+
 
 
         default: return ({

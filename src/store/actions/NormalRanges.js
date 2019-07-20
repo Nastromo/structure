@@ -1,6 +1,6 @@
-export const addRanges = (item) => ({
+export const addRanges = (obj) => ({
     type: 'ADD_NORM',
-    item
+    obj
 });
 
 export const delRanges = (index) => ({

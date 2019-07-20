@@ -1,6 +1,6 @@
-export const addCriRanges = (item) => ({
+export const addCriRanges = (obj) => ({
     type: 'ADD_CRIT',
-    item
+    obj
 });
 
 export const delCriRanges = (index) => ({

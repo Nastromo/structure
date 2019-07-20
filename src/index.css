@@ -1891,6 +1891,14 @@ p.logo-text:hover {
     width: 100%;
 }
 
+.fle-fer {
+    display: flex;
+}
+
+.mar-r-ghj {
+    margin: 0 30px 0 0;
+}
+
 .del-save {
     display: flex;
     justify-content: flex-start;

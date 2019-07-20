@@ -15,7 +15,7 @@ export class Departments extends Component {
     }
 
     delDep = (e) => {
-        this.props.removeDep(Number(e.target.id));
+        this.props.removeDep(e.target.id);
     }
 
     render() {
@@ -32,8 +32,8 @@ export class Departments extends Component {
                             this.props.list.map((item, i) => {
                                 return (
                                     <div key={i} className="item-spec-l">
-                                        <p className="code-pp">{item.name}</p>
-                                        <div id={item.id} onClick={this.delDep} className="del-all">del</div>
+                                        <p className="code-pp">{item}</p>
+                                        <div id={item} onClick={this.delDep} className="del-all">del</div>
                                     </div>
                                 )
                             })

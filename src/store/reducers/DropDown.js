@@ -82,6 +82,12 @@ export const dropdownStatus = (state = {}, action) => {
                 newState = JSON.parse(JSON.stringify(state));
                 newState.departments = action.obj.status;
                 return newState;
+            case `instrumentType`:
+                newState = JSON.parse(JSON.stringify(state));
+                newState.instrumentType = action.obj.status;
+                return newState;
+
+
 
 
             default: return state;

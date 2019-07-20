@@ -1,6 +1,6 @@
-export const addDef = (item) => ({
+export const addDef = (obj) => ({
     type: 'ADD_DEF',
-    item
+    obj
 });
 
 export const delDef = (index) => ({

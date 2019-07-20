@@ -10,10 +10,10 @@ export const delDep = (index) => ({
     index
 });
 
-export const removeDep = (id) => {
+export const removeDep = (name) => {
     return async (dispatch, getState) => {
         try {
-            const res = await API.post('/v1/delete-dep', { id: id });
+            const res = await API.post('/v1/delete-dep', { name: name });
             dispatch(showDeps(res.data));
         } catch (err) {
             console.log(err);

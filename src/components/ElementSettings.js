@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SubmitButton from './SubmitButton';
 import DropDown from './DropDown';
 import { addDef, delDef } from '../store/actions/AddDef';
 import { addRanges, delRanges } from '../store/actions/NormalRanges';
 import { addCriRanges, delCriRanges } from '../store/actions/CriticalRanges';
+import { changeInsCode, changeHcLow, changeHcHigh, changeCode, changeDesc, changeUnits, changeLoinc, changeAnlLow, changeAnlHigh, changeDohLoinc, changeDohCriteria, changeDohResults, changeInter, getTypes, handleCreate, handleUpdate } from '../store/actions/Elements';
+import { getDeps } from '../store/actions/Deps';
 
 
 export class ElementSettings extends Component {
+    componentDidMount() {
+        this.props.getTypes();
+        this.props.getDeps();
+    }
+
     constructor(props) {
         super(props);
         this.types = [`Instrument`, `Manual`];
@@ -18,9 +24,21 @@ export class ElementSettings extends Component {
     inject = (option) => {
         if (option === `Instrument`) {
             return (
-                <div >
-                    <p className="tit-ins">Ins. Code</p>
-                    <input className="simple-input" type="text" value={this.props.insCode} onChange={this.handleChange} />
+                <div className="fle-fer">
+                    <div className="mar-r-ghj">
+                        <p className="tit-ins">Ins. Code</p>
+                        <input className="simple-input" value={this.props.elem.insCode ? this.props.elem.insCode : ""} onChange={this.props.changeInsCode} />
+                    </div>
+                    <div>
+                        <p className="tit-ins">Instrument Type</p>
+                        <div className="div200w">
+                            <DropDown
+                                option={this.props.elem.insType}
+                                status={this.props.isInsTypeOpen}
+                                menu={this.props.types}
+                                id="instrumentType" />
+                        </div>
+                    </div>
                 </div>
             );
         } else {
@@ -29,7 +47,7 @@ export class ElementSettings extends Component {
                     <p className="tit-ins">Departament</p>
                     <div className="div200w">
                         <DropDown
-                            option={this.props.chosenDep}
+                            option={this.props.elem.departament}
                             status={this.props.isDepOpen}
                             menu={this.props.departments}
                             id="departament" />
@@ -46,7 +64,7 @@ export class ElementSettings extends Component {
                     <p className="side-t mar-r-gh">Autofinalize</p>
                     <div className="div200w mar-ggj-l">
                         <DropDown
-                            option={this.props.finalize}
+                            option={this.props.elem.autofinalize}
                             status={this.props.isFinalizeOpen}
                             menu={this.alergy}
                             id="finalize" />
@@ -54,10 +72,10 @@ export class ElementSettings extends Component {
                     <p className="side-t mar-r-gh">Hold Criteria</p>
                     <div className="right-bi-n marg10-n">
                         <div id="deleteIns" className="save-s">
-                            <input className="simple-input" type="text" placeholder="Low" value={this.props.low} onChange={this.handleChange} />
+                            <input className="simple-input" placeholder="Low" value={this.props.elem.hcLow ? this.props.elem.hcLow : ""} onChange={this.props.changeHcLow} />
                         </div>
                         <div className="save-s">
-                            <input className="simple-input" type="text" placeholder="High" value={this.props.high} onChange={this.handleChange} />
+                            <input className="simple-input" placeholder="High" value={this.props.elem.hcHigh ? this.props.elem.hcHigh : ""} onChange={this.props.changeHcHigh} />
                         </div>
                     </div>
                 </div>
@@ -67,12 +85,13 @@ export class ElementSettings extends Component {
         }
     }
 
-    showDefineList = (list) => {
+    showDefineList = (defineList) => {
+        const list = JSON.parse(defineList ? defineList : "[]");
         return list.map((item, i) => {
             return (
                 <div key={i} className="fle-def">
                     <div className="def-item">
-                        {item}
+                        {item.title}
                     </div>
                     <div id={i} onClick={this.delDefine} className="del-all">del</div>
                 </div>
@@ -81,14 +100,15 @@ export class ElementSettings extends Component {
     }
 
     addDefine = (e) => {
-        this.props.addDef(this.def.value);
+        this.props.addDef({ title: this.def.value });
     }
 
     delDefine = (e) => {
         this.props.delDef(e.target.id);
     }
 
-    showNormalRanges = (list) => {
+    showNormalRanges = (normalRanges) => {
+        const list = JSON.parse(normalRanges ? normalRanges : "[]");
         return list.map((item, i) => {
             return (
                 <div key={i} className="flex-it">
@@ -119,7 +139,9 @@ export class ElementSettings extends Component {
         this.props.delRanges(Number(e.target.id));
     }
 
-    showCriticalRanges = (list) => {
+    showCriticalRanges = (criticalRanges) => {
+        const list = JSON.parse(criticalRanges ? criticalRanges : "[]");
+
         return list.map((item, i) => {
             return (
                 <div key={i} className="flex-it">
@@ -153,48 +175,42 @@ export class ElementSettings extends Component {
     render() {
         return (
             <div className="right-side">
-                <div className="del-save">
+                <div className="del-save alig-righd">
                     <p className="side-t">Element Definition Deatails</p>
-                    <div className="right-bi-n">
-                        <div id="deleteIns" className="save-s">
-                            <SubmitButton status={this.props.deleteStatus} text="Delete" onClick={this.delete} />
-                        </div>
-                        <div className="save-s">
-                            <SubmitButton status={this.props.saveStatus} text="Save" onClick={this.save} />
-                        </div>
-                    </div>
+                    {this.props.isCreateMode ? <div onClick={this.props.handleCreate} className="create">Create</div> :
+                        <div onClick={this.props.handleUpdate} className="green-btn wi130g">Update</div>}
                 </div>
                 <div className="flex-inst">
                     <div >
                         <p className="tit-ins">Code</p>
-                        <input className="simple-input" type="text" value={this.props.code} onChange={this.handleChange} />
+                        <input className="simple-input" value={this.props.elem.code ? this.props.elem.code : ""} onChange={this.props.changeCode} />
                     </div>
                     <div >
                         <p className="tit-ins">Description</p>
-                        <input className="simple-input" type="text" value={this.props.description} onChange={this.handleChange} />
+                        <input className="simple-input" value={this.props.elem.description ? this.props.elem.description : ""} onChange={this.props.changeDesc} />
                     </div>
                     <div >
                         <p className="tit-ins">Result Type</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.chosenType}
+                                option={this.props.elem.resultType}
                                 status={this.props.isTypeOpen}
                                 menu={this.types}
                                 id="resultTypes" />
                         </div>
                     </div>
-                    {this.inject(this.props.chosenType)}
+                    {this.inject(this.props.elem.resultType)}
                 </div>
                 <div className="flex-inst">
                     <div >
                         <p className="tit-ins">Units</p>
-                        <input className="simple-input" type="text" value={this.props.units} onChange={this.handleChange} />
+                        <input className="simple-input" value={this.props.elem.units ? this.props.elem.units : ""} onChange={this.props.changeUnits} />
                     </div>
                     <div >
                         <p className="tit-ins">Alergy</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.chosenAlergy}
+                                option={this.props.elem.alergy}
                                 status={this.props.isAlergyOpen}
                                 menu={this.alergy}
                                 id="alergy" />
@@ -204,7 +220,7 @@ export class ElementSettings extends Component {
                         <p className="tit-ins">Drug</p>
                         <div className="div200w">
                             <DropDown
-                                option={this.props.chosenDrug}
+                                option={this.props.elem.drug}
                                 status={this.props.isDrugOpen}
                                 menu={this.alergy}
                                 id="drug" />
@@ -212,26 +228,26 @@ export class ElementSettings extends Component {
                     </div>
                     <div >
                         <p className="tit-ins">Loinc</p>
-                        <input className="simple-input" type="text" value={this.props.loinc} onChange={this.handleChange} />
+                        <input className="simple-input" value={this.props.elem.loinc ? this.props.elem.loinc : ""} onChange={this.props.changeLoinc} />
                     </div>
                 </div>
                 <div className="del-save gg-start">
                     <p className="side-t mar-ri">Acceptable Numeric Limits</p>
                     <div className="right-bi-n marg10-n">
                         <div id="deleteIns" className="save-s">
-                            <input className="simple-input" type="text" placeholder="Low" value={this.props.low} onChange={this.handleChange} />
+                            <input className="simple-input" value={this.props.elem.anlLow ? this.props.elem.anlLow : ""} onChange={this.props.changeAnlLow} />
                         </div>
                         <div className="save-s">
-                            <input className="simple-input" type="text" placeholder="High" value={this.props.high} onChange={this.handleChange} />
+                            <input className="simple-input" value={this.props.elem.anlHigh ? this.props.elem.anlHigh : ""} onChange={this.props.changeAnlHigh} />
                         </div>
                     </div>
                 </div>
-                {this.injectHold(this.props.chosenType)}
+                {this.injectHold(this.props.elem.resultType)}
                 <div className="del-save gg-start">
                     <div className="div200w mar-ri">
                         <p className="tit-ins">Alpha Numeric</p>
                         <DropDown
-                            option={this.props.alpha}
+                            option={this.props.elem.alphaNumeric}
                             status={this.props.isAlphaOpen}
                             menu={this.alergy}
                             id="alpha" />
@@ -241,7 +257,7 @@ export class ElementSettings extends Component {
                         <div className="right-bi-n marg10-n">
                             <div id="deleteIns" className="save-s">
                                 <p className="tit-ins">Define List</p>
-                                <input className="simple-input wide-yy" type="text" placeholder="Result Def." ref={el => this.def = el} />
+                                <input className="simple-input wide-yy" ref={el => this.def = el} />
                             </div>
                             <div onClick={this.addDefine} className="add-btn">add</div>
                         </div>
@@ -251,22 +267,22 @@ export class ElementSettings extends Component {
                         <div className="flex-inst">
                             <div >
                                 <p className="tit-ins">DOH LOINC</p>
-                                <input className="simple-input wide33" type="text" value={this.props.doh} onChange={this.handleChange} />
+                                <input className="simple-input wide33" value={this.props.elem.dohLoinc ? this.props.elem.dohLoinc : ""} onChange={this.props.changeDohLoinc} />
                             </div>
                             <div >
                                 <p className="tit-ins">{`Criteria + < >`}</p>
-                                <input className="simple-input wide33" type="text" value={this.props.criteria} onChange={this.handleChange} />
+                                <input className="simple-input wide33" value={this.props.elem.dohCriteria ? this.props.elem.dohCriteria : ""} onChange={this.props.changeDohCriteria} />
                             </div>
                             <div >
                                 <p className="tit-ins">Result</p>
-                                <input className="simple-input wide33" type="text" value={this.props.resultD} onChange={this.handleChange} />
+                                <input className="simple-input wide33" value={this.props.elem.dohResult ? this.props.elem.dohResult : ""} onChange={this.props.changeDohResults} />
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div className="gg-der">
-                    {this.showDefineList(this.props.defineList)}
+                    {this.showDefineList(this.props.elem.defineList)}
                 </div>
 
 
@@ -303,7 +319,7 @@ export class ElementSettings extends Component {
                     <div onClick={this.addCriRanges} className="add-btn">add</div>
                 </div>
                 <div className="max-hei">
-                    {this.showCriticalRanges(this.props.criticalRangesList)}
+                    {this.showCriticalRanges(this.props.elem.criticalRanges)}
                 </div>
 
 
@@ -338,15 +354,15 @@ export class ElementSettings extends Component {
                     <div onClick={this.addRanges} className="add-btn">add</div>
                 </div>
                 <div className="max-hei">
-                    {this.showNormalRanges(this.props.normalRangesList)}
+                    {this.showNormalRanges(this.props.elem.nornalRanges)}
                 </div>
 
 
                 <p className="side-t mar-t">Interpratation</p>
                 <textarea
                     className="gross-other"
-                    value={this.props.interpratation}
-                    onChange={this.handleChange}
+                    value={this.props.elem.interpratation}
+                    onChange={this.props.changeInter}
                 ></textarea>
             </div>
         )
@@ -354,9 +370,12 @@ export class ElementSettings extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    departments: [`dep 1`, `dep 2`],
+    types: state.types,
+    elem: state.element,
+    departments: state.deps,
     chosenDep: state.dropdownOption.departament,
     isDepOpen: state.dropdownStatus.departament,
+    isInsTypeOpen: state.dropdownStatus.instrumentType,
     chosenType: state.dropdownOption.resultTypes,
     isTypeOpen: state.dropdownStatus.resultTypes,
     chosenAlergy: state.dropdownOption.alergy,
@@ -374,6 +393,7 @@ const mapStateToProps = (state) => ({
     isGenCritOpen: state.dropdownStatus.genderCrit,
     genderNorm: state.dropdownOption.genderNorm,
     isGenNormOpen: state.dropdownStatus.genderNorm,
+    isCreateMode: state.isCreateModeElem
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -383,6 +403,23 @@ const mapDispatchToProps = dispatch => ({
     delRanges: (index) => dispatch(delRanges(index)),
     addCriRanges: (item) => dispatch(addCriRanges(item)),
     delCriRanges: (index) => dispatch(delCriRanges(index)),
+    changeInsCode: (e) => dispatch(changeInsCode(e)),
+    changeHcLow: (e) => dispatch(changeHcLow(e)),
+    changeHcHigh: (e) => dispatch(changeHcHigh(e)),
+    changeCode: (e) => dispatch(changeCode(e)),
+    changeDesc: (e) => dispatch(changeDesc(e)),
+    changeUnits: (e) => dispatch(changeUnits(e)),
+    changeLoinc: (e) => dispatch(changeLoinc(e)),
+    changeAnlLow: (e) => dispatch(changeAnlLow(e)),
+    changeAnlHigh: (e) => dispatch(changeAnlHigh(e)),
+    changeDohLoinc: (e) => dispatch(changeDohLoinc(e)),
+    changeDohCriteria: (e) => dispatch(changeDohCriteria(e)),
+    changeDohResults: (e) => dispatch(changeDohResults(e)),
+    changeInter: (e) => dispatch(changeInter(e)),
+    getTypes: () => dispatch(getTypes()),
+    handleUpdate: () => dispatch(handleUpdate()),
+    handleCreate: () => dispatch(handleCreate()),
+    getDeps: () => dispatch(getDeps()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ElementSettings)
