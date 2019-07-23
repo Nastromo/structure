@@ -74,11 +74,7 @@ export const createMode = (bool) => {
 export const getDeps = () => {
     return async (dispatch, getState) => {
         const res = await API.get(`/v1/deps`);
-        let deps = [];
-        for (let i = 0; i < res.data.length; i++) {
-            deps.push(res.data[i].name)
-        }
-        dispatch(setDeps(deps));
+        dispatch(setDeps(res.data));
     }
 }
 
