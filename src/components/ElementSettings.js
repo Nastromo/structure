@@ -26,10 +26,6 @@ export class ElementSettings extends Component {
             return (
                 <div className="fle-fer">
                     <div className="mar-r-ghj">
-                        <p className="tit-ins">Ins. Code</p>
-                        <input className="simple-input" value={this.props.elem.insCode ? this.props.elem.insCode : ""} onChange={this.props.changeInsCode} />
-                    </div>
-                    <div>
                         <p className="tit-ins">Instrument Type</p>
                         <div className="div200w">
                             <DropDown
@@ -38,6 +34,10 @@ export class ElementSettings extends Component {
                                 menu={this.props.types}
                                 id="instrumentType" />
                         </div>
+                    </div>
+                    <div>
+                        <p className="tit-ins">Ins. Code</p>
+                        <input className="simple-input" value={this.props.elem.insCode ? this.props.elem.insCode : ""} onChange={this.props.changeInsCode} />
                     </div>
                 </div>
             );
@@ -361,7 +361,7 @@ export class ElementSettings extends Component {
                 <p className="side-t mar-t">Interpratation</p>
                 <textarea
                     className="gross-other"
-                    value={this.props.elem.interpratation}
+                    value={this.props.elem.interpratation ? this.props.elem.interpratation : ""}
                     onChange={this.props.changeInter}
                 ></textarea>
             </div>

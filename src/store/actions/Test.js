@@ -141,6 +141,27 @@ export const handleInstruc = (text) => ({
     text
 });
 
+export const delElem = (index) => ({
+    type: 'DEL_TEST_ELEM',
+    index
+});
+
+export const addElem = (obj) => ({
+    type: 'ADD_TEST_ELEM',
+    obj
+});
+
+export const getElem = (code) => {
+    return async (dispatch, getState) => {
+        try {
+            const res = await API.get(`/v1/elem?code=${code}`);
+            dispatch(addElem(res.data));
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
 export const createTest = (test) => {
     return async (dispatch, getState) => {
         try {

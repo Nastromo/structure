@@ -29,13 +29,13 @@ export const isCreateMode = (state = false, action) => {
     switch (action.type) {
         case `SET_CREATE_MODE_TEST`:
             return action.bool;
-    
+
         default: return state;
     }
 }
 
 export const chosenTest = (state = {}, action) => {
-    let newState;
+    let newState, elems;
     switch (action.type) {
         case `SET_CHOSEN_TEST`:
             return action.obj;
@@ -114,10 +114,24 @@ export const chosenTest = (state = {}, action) => {
             newState = JSON.parse(JSON.stringify(state));
             newState.methodology = action.text;
             return newState;
-        case `SET_DEF_TEST`:
+
+        case `DEL_TEST_ELEM`:
             newState = JSON.parse(JSON.stringify(state));
-            newState.elementDefinition = action.text;
+            elems = JSON.parse(newState.elementDefinition ? newState.elementDefinition : "[]");
+            elems.splice(action.index, 1);
+            newState.elementDefinition = JSON.stringify(elems);
             return newState;
+
+        case `ADD_TEST_ELEM`:
+            newState = JSON.parse(JSON.stringify(state));
+            elems = JSON.parse(newState.elementDefinition ? newState.elementDefinition : "[]");
+            elems.push({
+                code: action.obj.code,
+                description: action.obj.description
+            });
+            newState.elementDefinition = JSON.stringify(elems);
+            return newState;
+
         case `SET_INSTRUC_TEST`:
             newState = JSON.parse(JSON.stringify(state));
             newState.collectionInstuctions = action.text;
