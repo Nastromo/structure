@@ -55,7 +55,7 @@ export class InstrumentSettings extends Component {
                                 id="departments" />
                         </div>
                     </div>
-                    <div>
+                    <div style={{width: "100%"}}>
                         <div className="flex-in-ad">
                             <input className="simple-input mar-ri-b" ref={el => this.name = el} placeholder="Instrument Name" type="text" />
                             <input className="simple-input mar-ri-b" ref={el => this.serial = el} placeholder="Serial #" type="text" />

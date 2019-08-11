@@ -1873,6 +1873,7 @@ p.logo-text:hover {
 .flex-inst {
     display: flex;
     width: 100%;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin: 10px 0;
 }
@@ -1901,6 +1902,7 @@ p.logo-text:hover {
 
 .del-save {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
 }
@@ -1928,6 +1930,7 @@ p.logo-text:hover {
 .flex-in-ad {
     display: flex;
     margin: 10px 0;
+    width: 100%;
 }
 
 .mar-ri-b {
@@ -1996,7 +1999,7 @@ p.logo-text:hover {
 }
 
 .wide33 {
-    width: 250px;
+    flex-basis: 33%;
     margin: 0 10px 0 0;
 }
 
@@ -2011,6 +2014,7 @@ p.logo-text:hover {
 
 .red-poe {
     width: 400px;
+    margin-right: 20px;
 }
 
 .wi400p {
@@ -2396,4 +2400,13 @@ p.logo-text:hover {
 
 .ju-start {
     justify-content: flex-start;
+}
+
+.wi400p {
+    width: 100%;
+    margin: 0 20px 0 0;
+}
+
+.mar-ri-b {
+    width: 100%;
 }
