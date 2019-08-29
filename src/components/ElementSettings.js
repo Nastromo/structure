@@ -24,20 +24,18 @@ export class ElementSettings extends Component {
     inject = (option) => {
         if (option === `Instrument`) {
             return (
-                <div className="fle-fer">
-                    <div className="mar-r-ghj">
+                <div className="fle-fer bas35">
+                    <div className="mar-r-ghj bas47">
                         <p className="tit-ins">Instrument Type</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.elem.insType}
-                                status={this.props.isInsTypeOpen}
-                                menu={this.props.types}
-                                id="instrumentType" />
-                        </div>
+                        <DropDown
+                            option={this.props.elem.insType}
+                            status={this.props.isInsTypeOpen}
+                            menu={this.props.types}
+                            id="instrumentType" />
                     </div>
-                    <div>
+                    <div className="bas47">
                         <p className="tit-ins">Ins. Code</p>
-                        <input className="simple-input" value={this.props.elem.insCode ? this.props.elem.insCode : ""} onChange={this.props.changeInsCode} />
+                        <input className="simple-input-n" value={this.props.elem.insCode ? this.props.elem.insCode : ""} onChange={this.props.changeInsCode} />
                     </div>
                 </div>
             );
@@ -113,11 +111,11 @@ export class ElementSettings extends Component {
             return (
                 <div key={i} className="flex-it">
                     <div key={i} className="flex-inst def-item marg-ri">
-                        <div className="item-rang">{item.ageFrom}</div>
-                        <div className="item-rang">{item.ageTo}</div>
-                        <div className="item-rang">{item.gender}</div>
-                        <div className="item-rang">{item.low}</div>
-                        <div className="item-rang">{item.high}</div>
+                        <div className="item-rang bas17">{item.ageFrom}</div>
+                        <div className="item-rang bas17">{item.ageTo}</div>
+                        <div className="item-rang bas17">{item.gender}</div>
+                        <div className="item-rang bas17">{item.low}</div>
+                        <div className="item-rang bas17">{item.high}</div>
                     </div>
                     <div id={i} onClick={this.delRanges} className="del-all">del</div>
                 </div>
@@ -146,11 +144,11 @@ export class ElementSettings extends Component {
             return (
                 <div key={i} className="flex-it">
                     <div key={i} className="flex-inst def-item marg-ri">
-                        <div className="item-rang">{item.ageFrom}</div>
-                        <div className="item-rang">{item.ageTo}</div>
-                        <div className="item-rang">{item.gender}</div>
-                        <div className="item-rang">{item.low}</div>
-                        <div className="item-rang">{item.high}</div>
+                        <div className="item-rang bas17">{item.ageFrom}</div>
+                        <div className="item-rang bas17">{item.ageTo}</div>
+                        <div className="item-rang bas17">{item.gender}</div>
+                        <div className="item-rang bas17">{item.low}</div>
+                        <div className="item-rang bas17">{item.high}</div>
                     </div>
                     <div id={i} onClick={this.delCriRanges} className="del-all">del</div>
                 </div>
@@ -180,55 +178,57 @@ export class ElementSettings extends Component {
                     {this.props.isCreateMode ? <div onClick={this.props.handleCreate} className="create">Create</div> :
                         <div onClick={this.props.handleUpdate} className="green-btn wi130g">Update</div>}
                 </div>
+
+
+
                 <div className="flex-inst">
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Code</p>
-                        <input className="simple-input" value={this.props.elem.code ? this.props.elem.code : ""} onChange={this.props.changeCode} />
+                        <input className="simple-input-n" value={this.props.elem.code ? this.props.elem.code : ""} onChange={this.props.changeCode} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Description</p>
-                        <input className="simple-input" value={this.props.elem.description ? this.props.elem.description : ""} onChange={this.props.changeDesc} />
+                        <input className="simple-input-n" value={this.props.elem.description ? this.props.elem.description : ""} onChange={this.props.changeDesc} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Result Type</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.elem.resultType}
-                                status={this.props.isTypeOpen}
-                                menu={this.types}
-                                id="resultTypes" />
-                        </div>
+                        <DropDown
+                            option={this.props.elem.resultType}
+                            status={this.props.isTypeOpen}
+                            menu={this.types}
+                            id="resultTypes" />
                     </div>
                     {this.inject(this.props.elem.resultType)}
                 </div>
+
+
+
+
+
                 <div className="flex-inst">
-                    <div >
+                    <div className="bas20">
                         <p className="tit-ins">Units</p>
-                        <input className="simple-input" value={this.props.elem.units ? this.props.elem.units : ""} onChange={this.props.changeUnits} />
+                        <input className="simple-input-n" value={this.props.elem.units ? this.props.elem.units : ""} onChange={this.props.changeUnits} />
                     </div>
-                    <div >
+                    <div className="bas20">
                         <p className="tit-ins">Alergy</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.elem.alergy}
-                                status={this.props.isAlergyOpen}
-                                menu={this.alergy}
-                                id="alergy" />
-                        </div>
+                        <DropDown
+                            option={this.props.elem.alergy}
+                            status={this.props.isAlergyOpen}
+                            menu={this.alergy}
+                            id="alergy" />
                     </div>
-                    <div >
+                    <div className="bas20">
                         <p className="tit-ins">Drug</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.elem.drug}
-                                status={this.props.isDrugOpen}
-                                menu={this.alergy}
-                                id="drug" />
-                        </div>
+                        <DropDown
+                            option={this.props.elem.drug}
+                            status={this.props.isDrugOpen}
+                            menu={this.alergy}
+                            id="drug" />
                     </div>
-                    <div >
+                    <div className="bas20">
                         <p className="tit-ins">Loinc</p>
-                        <input className="simple-input" value={this.props.elem.loinc ? this.props.elem.loinc : ""} onChange={this.props.changeLoinc} />
+                        <input className="simple-input-n" value={this.props.elem.loinc ? this.props.elem.loinc : ""} onChange={this.props.changeLoinc} />
                     </div>
                 </div>
                 <div className="del-save gg-start">
@@ -290,31 +290,29 @@ export class ElementSettings extends Component {
 
                 <p className="side-t mar-t">Critical Ranges</p>
                 <div className="flex-inst ali-end">
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Age from</p>
-                        <input className="simple-input" type="text" ref={el => this.ageFromC = el} />
+                        <input className="simple-input-n" type="text" ref={el => this.ageFromC = el} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Age to</p>
-                        <input className="simple-input" type="text" ref={el => this.ageToC = el} />
+                        <input className="simple-input-n" type="text" ref={el => this.ageToC = el} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Gender</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.genderCrit}
-                                status={this.props.isGenCritOpen}
-                                menu={this.gender}
-                                id="genderCrit" />
-                        </div>
+                        <DropDown
+                            option={this.props.genderCrit}
+                            status={this.props.isGenCritOpen}
+                            menu={this.gender}
+                            id="genderCrit" />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Low</p>
-                        <input className="simple-input" type="text" ref={el => this.lowC = el} />
+                        <input className="simple-input-n" type="text" ref={el => this.lowC = el} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">High</p>
-                        <input className="simple-input" type="text" ref={el => this.highC = el} />
+                        <input className="simple-input-n" type="text" ref={el => this.highC = el} />
                     </div>
                     <div onClick={this.addCriRanges} className="add-btn">add</div>
                 </div>
@@ -325,31 +323,29 @@ export class ElementSettings extends Component {
 
                 <p className="side-t mar-t">Nornal Ranges</p>
                 <div className="flex-inst ali-end">
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Age from</p>
-                        <input className="simple-input" type="text" ref={el => this.ageFrom = el} />
+                        <input className="simple-input-n" type="text" ref={el => this.ageFrom = el} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Age to</p>
-                        <input className="simple-input" type="text" ref={el => this.ageTo = el} />
+                        <input className="simple-input-n" type="text" ref={el => this.ageTo = el} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Gender</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.genderNorm}
-                                status={this.props.isGenNormOpen}
-                                menu={this.gender}
-                                id="genderNorm" />
-                        </div>
+                        <DropDown
+                            option={this.props.genderNorm}
+                            status={this.props.isGenNormOpen}
+                            menu={this.gender}
+                            id="genderNorm" />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Low</p>
-                        <input className="simple-input" type="text" ref={el => this.low = el} />
+                        <input className="simple-input-n" type="text" ref={el => this.low = el} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">High</p>
-                        <input className="simple-input" type="text" ref={el => this.high = el} />
+                        <input className="simple-input-n" type="text" ref={el => this.high = el} />
                     </div>
                     <div onClick={this.addRanges} className="add-btn">add</div>
                 </div>

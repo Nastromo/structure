@@ -78,107 +78,97 @@ export class TestsSettings extends Component {
                         <div onClick={this.handleUpdate} className="green-btn wi130g">Update</div>}
                 </div>
                 <div className="der-fl">
-                    <div >
+
+
+                    <div className="bas17">
                         <p className="tit-ins">Code</p>
-                        <input className="simple-input wiyt" value={this.props.test.code ? this.props.test.code : ""} onChange={this.setCode} />
+                        <input className="simple-input-n" value={this.props.test.code ? this.props.test.code : ""} onChange={this.setCode} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Description</p>
-                        <input className="simple-input wiyt" value={this.props.test.description ? this.props.test.description : ""} onChange={this.setDesc} />
+                        <input className="simple-input-n" value={this.props.test.description ? this.props.test.description : ""} onChange={this.setDesc} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Status</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.test.status}
-                                status={this.props.isStatusOpen}
-                                menu={this.statuses}
-                                id="resTypes" />
-                        </div>
+                        <DropDown
+                            option={this.props.test.status}
+                            status={this.props.isStatusOpen}
+                            menu={this.statuses}
+                            id="resTypes" />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Mailout Lab</p>
-                        <input className="simple-input wiyt" value={this.props.test.mailoutLab ? this.props.test.mailoutLab : ""} onChange={this.setLab} />
+                        <input className="simple-input-n" value={this.props.test.mailoutLab ? this.props.test.mailoutLab : ""} onChange={this.setLab} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Mailout Code</p>
-                        <input className="simple-input wiyt" value={this.props.test.mailoutCode ? this.props.test.mailoutCode : ""} onChange={this.setMailoutCode} />
+                        <input className="simple-input-n" value={this.props.test.mailoutCode ? this.props.test.mailoutCode : ""} onChange={this.setMailoutCode} />
                     </div>
                 </div>
 
                 <div className="der-fl m15">
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Short stability</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.test.shortStability}
-                                status={this.props.isStabOpen}
-                                menu={this.yesno}
-                                id="stability" />
-                        </div>
+                        <DropDown
+                            option={this.props.test.shortStability}
+                            status={this.props.isStabOpen}
+                            menu={this.yesno}
+                            id="stability" />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Priority</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.test.priority}
-                                status={this.props.isPriOpen}
-                                menu={this.yesno}
-                                id="priority" />
-                        </div>
+                        <DropDown
+                            option={this.props.test.priority}
+                            status={this.props.isPriOpen}
+                            menu={this.yesno}
+                            id="priority" />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Auto Stat</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.test.autoStat}
-                                status={this.props.isAutoOpen}
-                                menu={this.yesno}
-                                id="autostat" />
-                        </div>
+                        <DropDown
+                            option={this.props.test.autoStat}
+                            status={this.props.isAutoOpen}
+                            menu={this.yesno}
+                            id="autostat" />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Sendout Critical</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.test.sendOutCritical}
-                                status={this.props.isCriticalOpen}
-                                menu={this.yesno}
-                                id="critical" />
-                        </div>
+                        <DropDown
+                            option={this.props.test.sendOutCritical}
+                            status={this.props.isCriticalOpen}
+                            menu={this.yesno}
+                            id="critical" />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Centralink Required</p>
-                        <input className="simple-input wiyt" value={this.props.test.centralinkRequired ? this.props.test.centralinkRequired : ""} onChange={this.setCentralink} />
+                        <input className="simple-input-n" value={this.props.test.centralinkRequired ? this.props.test.centralinkRequired : ""} onChange={this.setCentralink} />
                     </div>
                 </div>
 
                 <div className="der-fl m15">
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Specimen Volume</p>
-                        <input className="simple-input wiyt" value={this.props.test.specimenVolume ? this.props.test.specimenVolume : ""} onChange={this.setVolume} />
+                        <input className="simple-input-n" value={this.props.test.specimenVolume ? this.props.test.specimenVolume : ""} onChange={this.setVolume} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Specimen Container</p>
-                        <input className="simple-input wiyt" value={this.props.test.specimenContainer ? this.props.test.specimenContainer : ""} onChange={this.setContainer} />
+                        <input className="simple-input-n" value={this.props.test.specimenContainer ? this.props.test.specimenContainer : ""} onChange={this.setContainer} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Shipping Temperature</p>
-                        <div className="div200w">
-                            <DropDown
-                                option={this.props.test.shippigTemperature}
-                                status={this.props.isShipOpen}
-                                menu={this.shipping}
-                                id="shipping" />
-                        </div>
+                        <DropDown
+                            option={this.props.test.shippigTemperature}
+                            status={this.props.isShipOpen}
+                            menu={this.shipping}
+                            id="shipping" />
                     </div>
-                    <div>
+                    <div className="bas17">
                         <p className="tit-ins">TAT</p>
-                        <input className="simple-input" value={this.props.test.tat ? this.props.test.tat : ""} onChange={this.setTat} />
+                        <input className="simple-input-n" value={this.props.test.tat ? this.props.test.tat : ""} onChange={this.setTat} />
                     </div>
-                    <div >
+                    <div className="bas17">
                         <p className="tit-ins">Methodology</p>
-                        <input className="simple-input" value={this.props.test.methodology ? this.props.test.methodology : ""} onChange={this.setMet} />
+                        <input className="simple-input-n" value={this.props.test.methodology ? this.props.test.methodology : ""} onChange={this.setMet} />
                     </div>
                 </div>
 
@@ -232,37 +222,31 @@ export class TestsSettings extends Component {
                 </div>
 
                 <div className="flex">
-                    <div >
+                    <div className="bas32">
                         <p className="tit-ins">Specimen Required</p>
-                        <div className="div400w">
-                            <DropDown
-                                option={this.props.speReqOption}
-                                status={this.props.isSpeReqOpen}
-                                menu={this.list}
-                                id="speReq" />
-                        </div>
+                        <DropDown
+                            option={this.props.speReqOption}
+                            status={this.props.isSpeReqOpen}
+                            menu={this.list}
+                            id="speReq" />
                         <div className="ram-200"></div>
                     </div>
-                    <div >
+                    <div className="bas32">
                         <p className="tit-ins">Alternative Specimen</p>
-                        <div className="div400w">
-                            <DropDown
-                                option={this.props.alternativeOption}
-                                status={this.props.isAlternativeOpen}
-                                menu={this.list}
-                                id="alternative" />
-                        </div>
+                        <DropDown
+                            option={this.props.alternativeOption}
+                            status={this.props.isAlternativeOpen}
+                            menu={this.list}
+                            id="alternative" />
                         <div className="ram-200"></div>
                     </div>
-                    <div className="m15">
+                    <div className="bas32">
                         <p className="tit-ins">AOE</p>
-                        <div className="div400w">
-                            <DropDown
-                                option={this.props.aoeOption}
-                                status={this.props.isAoeReqOpen}
-                                menu={this.aoe}
-                                id="aoe" />
-                        </div>
+                        <DropDown
+                            option={this.props.aoeOption}
+                            status={this.props.isAoeReqOpen}
+                            menu={this.aoe}
+                            id="aoe" />
                         <div className="ram-200"></div>
                     </div>
                 </div>
