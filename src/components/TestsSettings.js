@@ -77,7 +77,8 @@ export class TestsSettings extends Component {
     render() {
         return (
             <div className="right-side">
-                <div className="fke-kef-s">
+                <div className="del-save alig-righd manfgr">
+                    <p className="side-t">Test Maintenace</p>
                     {this.props.isCreateMode ? <div onClick={this.handleCreate} className="create">Create</div> :
                         <div onClick={this.handleUpdate} className="green-btn wi130g">Update</div>}
                 </div>

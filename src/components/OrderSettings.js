@@ -175,9 +175,9 @@ export class OrderSettings extends Component {
                     {this.returnClients()}
                     <div className="fger-ffr">
                         {this.props.set.isDeleted ? <div className="inc-btn-d">Inactive</div> : null}
-                        {this.props.isCreateMode ? 
-                        <div onClick={this.handleCreate} className="sub-btn-er create">Create</div> : 
-                        <div onClick={this.handleUpdate} className="sub-btn-er">Update</div>}
+                        {this.props.isCreateMode ?
+                            <div onClick={this.handleCreate} className="sub-btn-er create">Create</div> :
+                            <div onClick={this.handleUpdate} className="sub-btn-er">Update</div>}
 
 
                     </div>

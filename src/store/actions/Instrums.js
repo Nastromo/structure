@@ -1,5 +1,5 @@
 import API from '../../utils/Api';
-
+import { showNotification } from './Notification';
 
 
 export const addInstrum = (obj) => ({
@@ -107,6 +107,7 @@ export const handleCreate = () => {
             dispatch(setInstrum(res.data[0]));
             dispatch(setCreateMode(false))
             dispatch(setActiveRow(0));
+            dispatch(showNotification(`Created!`, `notification-green`));
         } catch (err) {
             console.log(err);
         }
@@ -121,6 +122,7 @@ export const handleUpdate = () => {
             dispatch(setInstrums(res.data));
             dispatch(setInstrum(res.data[0]));
             dispatch(setActiveRow(0));
+            dispatch(showNotification(`Updated!`, `notification-blue`));
         } catch (err) {
             console.log(err);
         }

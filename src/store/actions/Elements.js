@@ -1,5 +1,5 @@
 import API from '../../utils/Api';
-
+import { showNotification } from './Notification';
 
 
 
@@ -142,6 +142,7 @@ export const handleCreate = () => {
             dispatch(setElement(res.data[0]));
             dispatch(setActiveElemRow(0));
             dispatch(setCreateMode(false));
+            dispatch(showNotification(`Created!`, `notification-green`));
         } catch (err) {
             console.log(err);
         }
@@ -154,6 +155,7 @@ export const handleUpdate = () => {
         try {
             const res = await API.post(`/v1/update-elem`, elem);
             dispatch(setElements(res.data));
+            dispatch(showNotification(`Updated!`, `notification-blue`));
         } catch (err) {
             console.log(err);
         }

@@ -1,5 +1,5 @@
 import API from '../../utils/Api';
-
+import { showNotification } from './Notification';
 
 
 export const getTests = () => {
@@ -186,6 +186,7 @@ export const createTest = (test) => {
             dispatch(setSelectedTestRow(0));
             dispatch(setTests(res.data));
             dispatch(setMode(false));
+            dispatch(showNotification(`Created!`, `notification-green`));
         } catch (err) {
             dispatch(setError(true));
             console.log(err);
@@ -198,6 +199,7 @@ export const updateTest = (test) => {
         try {
             const res = await API.post(`/v1/update-test`, test);
             dispatch(setTests(res.data));
+            dispatch(showNotification(`Updated!`, `notification-blue`));
         } catch (err) {
             console.log(err);
         }

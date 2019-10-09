@@ -276,6 +276,10 @@ button {
     transition: top .12s ease;
 }
 
+.manfgr {
+    margin: 0 0 15px 0;
+}
+
 .notification-show {
     top: 0;
     background: #FFA377;
@@ -286,6 +290,12 @@ button {
     top: 0;
     background: #c7ffda;
     color: #00a034;
+}
+
+.notification-blue {
+    top: 0;
+    background: #ade8f7;
+    color: #2b609c;
 }
 
 .line-spinner {

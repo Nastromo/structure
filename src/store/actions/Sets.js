@@ -1,4 +1,7 @@
 import API from '../../utils/Api';
+import { showNotification } from './Notification';
+
+
 
 export const setLoading = (bool) => ({
     type: 'SET_SET_LOAD',
@@ -154,6 +157,7 @@ export const createSet = (set) => {
             dispatch(setSelectedSetRow(0));
             dispatch(setSets(res.data));
             dispatch(setMode(false));
+            dispatch(showNotification(`Created!`, `notification-green`));
         } catch (err) {
             dispatch(setError(true));
             console.log(err);
@@ -167,6 +171,7 @@ export const updateSet = (set) => {
             const res = await API.post(`/v1/update-set`, set);
             dispatch(setSelectedSetRow(0));
             dispatch(setSets(res.data));
+            dispatch(showNotification(`Updated!`, `notification-blue`));
         } catch (err) {
             console.log(err);
         }
