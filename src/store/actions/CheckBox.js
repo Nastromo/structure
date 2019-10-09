@@ -24,6 +24,18 @@ export const check = (obj) => {
                 obj
             }
 
+        case `volume`:
+            return {
+                type: 'CHECK_BOX_SET',
+                obj
+            }
+
+        case `source`:
+            return {
+                type: 'CHECK_BOX_SET',
+                obj
+            }
+
         default: return ({
             type: 'CHECK_BOX',
             obj

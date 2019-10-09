@@ -145,18 +145,18 @@ export const dropdownOption = (state = {}, action) => {
                 newState = JSON.parse(JSON.stringify(state));
                 newState.critical = action.obj.option;
                 return newState;
-            case `speReq`:
-                newState = JSON.parse(JSON.stringify(state));
-                newState.speReq = action.obj.option;
-                return newState;
+            // case `speReq`:
+            //     newState = JSON.parse(JSON.stringify(state));
+            //     newState.speReq = action.obj.option;
+            //     return newState;
             case `shipping`:
                 newState = JSON.parse(JSON.stringify(state));
                 newState.shipping = action.obj.option;
                 return newState;
-            case `alternative`:
-                newState = JSON.parse(JSON.stringify(state));
-                newState.alternative = action.obj.option;
-                return newState;
+            // case `alternative`:
+            //     newState = JSON.parse(JSON.stringify(state));
+            //     newState.alternative = action.obj.option;
+            //     return newState;
             case `aoe`:
                 newState = JSON.parse(JSON.stringify(state));
                 newState.aoe = action.obj.option;

@@ -34,6 +34,15 @@ export const isCreateMode = (state = false, action) => {
     }
 }
 
+export const spes = (state = [], action) => {
+    switch (action.type) {
+        case `SET_SPES`:
+            return action.list;
+
+        default: return state;
+    }
+}
+
 export const chosenTest = (state = {}, action) => {
     let newState, elems;
     switch (action.type) {
@@ -59,6 +68,14 @@ export const chosenTest = (state = {}, action) => {
                     return newState;
                 case `shipping`:
                     newState.shippigTemperature = action.obj.option;
+                    return newState;
+
+                case `speReq`:
+                    newState.speReq = action.obj.option;
+                    return newState;
+
+                case `alternative`:
+                    newState.speAlt = action.obj.option;
                     return newState;
                 default: return newState;
             }
@@ -136,6 +153,20 @@ export const chosenTest = (state = {}, action) => {
             newState = JSON.parse(JSON.stringify(state));
             newState.collectionInstuctions = action.text;
             return newState;
+
+        case `CHECK_BOX_SET`:
+
+            switch (action.obj.id) {
+                case `volume`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.volume = action.obj.status
+                    return newState;
+                case `source`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.source = action.obj.status
+                    return newState;
+                default: return state;
+            }
 
         default: return state;
     }

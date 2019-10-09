@@ -28,6 +28,22 @@ export const setTestRelative = (index) => {
     }
 }
 
+export const getSpes = () => {
+    return async (dispatch, getState) => {
+        try {
+            const res = await API.get(`/v1/spes`);
+            dispatch(setSpes(res.data));
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
+export const setSpes = (list) => ({
+    type: 'SET_SPES',
+    list
+});
+
 export const setChosenTest = (obj) => ({
     type: 'SET_CHOSEN_TEST',
     obj

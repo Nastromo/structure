@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import rarrow from '../img/rarrow.svg';
 import { showMenu, showItems } from '../store/actions/ShowMenu';
 
 
@@ -70,17 +71,7 @@ export class Navigation extends Component {
                             <div className="ham-line"></div>
                         </div>
                         <p className="logo-text">ADMIN</p>
-                        <Link
-                            id="option1"
-                            onClick={this.handleClick}
-                            innerRef={el => this.pending = el}
-                            className="menu-active"
-                            to="/account/option1">Title 1</Link>
-                        <Link
-                            id="option2"
-                            onClick={this.handleClick}
-                            innerRef={el => this.processing = el}
-                            to="/account/option2">Title 2</Link>
+
                     </div>
 
                     <div className="work-info">
@@ -90,7 +81,10 @@ export class Navigation extends Component {
                 <div onClick={this.hideSideMenu} className={this.props.sideMenu ? "shadow" : "shadow shadow-hide"} >
                     <div className={this.props.sideMenu ? "side-menu" : "side-menu side-menu-hide"}>
                         <div className="struct">
-                            <p onClick={this.showItems} id="item-m">STRUCTURE</p>
+                            <div className="flex">
+                                <p onClick={this.showItems} id="item-m">STRUCTURE</p>
+                                <img src={rarrow} className={this.props.subItems ? "rarrow actewe" : "rarrow"} alt=""/>
+                            </div>
                             <div className={this.props.subItems ? "sub-struct-show" : "sub-struct"}>
                                 <Link
                                     id="departments"
@@ -107,15 +101,15 @@ export class Navigation extends Component {
                                 <Link
                                     id="specimens"
                                     onClick={this.handleDep}
-                                    to="/account/specimens">Specimens list</Link>
-                                <Link
-                                    id="specimens"
-                                    onClick={this.handleDep}
                                     to="/account/tests">Test Maintenance</Link>
                                 <Link
                                     id="orderset"
                                     onClick={this.handleDep}
                                     to="/account/orderset">Orderset Maintenance</Link>
+                                <Link
+                                    id="specimens"
+                                    onClick={this.handleDep}
+                                    to="/account/specimens">Specimens list</Link>
                             </div>
                         </div>
 
@@ -129,7 +123,6 @@ export class Navigation extends Component {
 const mapStateToProps = (state) => ({
     sideMenu: state.sideMenu,
     subItems: state.subItems,
-
 })
 
 const mapDispatchToProps = (dispatch) => ({

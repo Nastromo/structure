@@ -2438,3 +2438,16 @@ p.logo-text:hover {
 .bas47 {
     flex-basis: 47%;
 }
+
+.rarrow {
+    height: 12px;
+    width: 12px;
+}
+
+.actewe {
+    transform: rotate(90deg);
+}
+
+.nader {
+    margin: 0 10px 0 0;
+}

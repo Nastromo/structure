@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropDown from './DropDown';
-import { setCode, setDesc, setLab, setMailoutCode, setCentralink, setVolume, setContainer, handleStability, handleInstruc, handleCrit, handleInfo, handleRepa, setTat, setMet, setDef, createTest, updateTest, delElem, getElem } from '../store/actions/Test';
+import { setCode, setDesc, setLab, setMailoutCode, setCentralink, setVolume, setContainer, handleStability, handleInstruc, handleCrit, handleInfo, handleRepa, setTat, setMet, setDef, createTest, updateTest, delElem, getElem, getSpes } from '../store/actions/Test';
 import SearchInput from './SearchInput';
+import CheckBox from './Checkbox';
 
 
 
@@ -11,9 +12,12 @@ export class TestsSettings extends Component {
         super(props);
         this.statuses = [`In-house`, `Mainlout`];
         this.yesno = [`yes`, `no`];
-        this.list = [`Dropdown menu`, `With list of`, `Specimens`];
         this.shipping = [`Ambient`, `Frozen`, `Refrigerated`, `Other`];
         this.aoe = [`option1`, `option2`];
+    }
+
+    componentDidMount() {
+        this.props.getSpes();
     }
 
     setCode = (e) => {
@@ -225,18 +229,18 @@ export class TestsSettings extends Component {
                     <div className="bas32">
                         <p className="tit-ins">Specimen Required</p>
                         <DropDown
-                            option={this.props.speReqOption}
+                            option={this.props.test.speReq}
                             status={this.props.isSpeReqOpen}
-                            menu={this.list}
+                            menu={this.props.spes}
                             id="speReq" />
                         <div className="ram-200"></div>
                     </div>
                     <div className="bas32">
                         <p className="tit-ins">Alternative Specimen</p>
                         <DropDown
-                            option={this.props.alternativeOption}
+                            option={this.props.test.speAlt}
                             status={this.props.isAlternativeOpen}
-                            menu={this.list}
+                            menu={this.props.spes}
                             id="alternative" />
                         <div className="ram-200"></div>
                     </div>
@@ -249,6 +253,13 @@ export class TestsSettings extends Component {
                             id="aoe" />
                         <div className="ram-200"></div>
                     </div>
+                </div>
+
+                <div className="flex ju-start">
+                    <div className="nader">
+                        <CheckBox status={this.props.test.source} title="Source" id="source" />
+                    </div>
+                    <CheckBox status={this.props.test.volume} title="Volume" id="volume" />
                 </div>
 
                 <p className="side-t m15">Element Definition Deatails</p>
@@ -298,6 +309,8 @@ export class TestsSettings extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    source: state.checkbox.source,
+    volume: state.checkbox.volume,
     statusOption: state.dropdownOption.status,
     isStatusOpen: state.dropdownStatus.status,
     stabilityOption: state.dropdownOption.stability,
@@ -321,6 +334,7 @@ const mapStateToProps = (state) => ({
     isLoadElem: state.searchLoading.elements,
     searchElem: state.searchQuery.elements,
     elements: state.searchResults.elements,
+    spes: state.spes,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -343,7 +357,7 @@ const mapDispatchToProps = dispatch => ({
     updateTest: (obj) => dispatch(updateTest(obj)),
     delElem: (index) => dispatch(delElem(index)),
     getElem: (text) => dispatch(getElem(text)),
-
+    getSpes: () => dispatch(getSpes())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TestsSettings)

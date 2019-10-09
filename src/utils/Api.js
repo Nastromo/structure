@@ -2,10 +2,12 @@ import axios from 'axios';
 
 let url = `http://192.168.20.221:8000`;
 if (window.location.href.includes(`localhost`)) {
+    console.log(`http://localhost`);
     url = `http://localhost:8000`;
 }
 
-if (window.location.href.includes(`192.168.20.218`)) {
+if (window.location.href.includes(`admin.empirecitylabs.mobi`)) {
+    console.log(`http://192.168.20.218:8000`);
     url = `http://192.168.20.218:8000`;
 }
 

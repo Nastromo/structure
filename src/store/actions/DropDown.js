@@ -35,6 +35,18 @@ export const setOption = (obj) => {
                 obj
             }
 
+        case `speReq`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_TEST',
+                obj
+            }
+
+        case `alternative`:
+            return {
+                type: 'SET_DROP_DOWN_OPTION_TEST',
+                obj
+            }
+
         case `igs`:
             return {
                 type: 'SET_DROP_DOWN_OPTION_SET',
