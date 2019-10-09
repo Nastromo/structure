@@ -13,9 +13,11 @@ import { tests, testsLoading, testsErrored, chosenTest, selectedTestRow, isCreat
 import { sets, setsLoading, setsError, selectedSet, isCreateModeSet, chosenSet, client, loadingRow, testsDropdown, testCodeOnSet} from './Sets';
 import { elementsList, element, activeElemRow, types, isCreateModeElem } from './Elements';
 import { searchQuery, searchLoading, searchResults } from '../reducers/SearchInput';
+import { insCodes } from '../reducers/InsCodes';
 
 
 const RootReducer = combineReducers({
+    insCodes,
     spes,
     searchQuery,
     searchLoading,

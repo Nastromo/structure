@@ -40,7 +40,7 @@ export class InstrumentSettings extends Component {
                         <div onClick={this.props.handleUpdate} className="green-btn wi130g">Update</div>}
                 </div>
 
-                <div className="flex-inst">
+                <div className="flex ali-top">
                     <div className="red-poe">
                         <div className="dis33">
                             <p className="tit-ins">Instrument Type</p>
@@ -55,13 +55,13 @@ export class InstrumentSettings extends Component {
                                 id="departments" />
                         </div>
                     </div>
-                    <div style={{width: "100%"}}>
-                        <div className="flex-in-ad">
+                    <div style={{ width: "100%" }}>
+                        <div className="flex-in-ad fderdd">
                             <input className="simple-input mar-ri-b" ref={el => this.name = el} placeholder="Instrument Name" type="text" />
                             <input className="simple-input mar-ri-b" ref={el => this.serial = el} placeholder="Serial #" type="text" />
                             <div onClick={this.addInstrum} className="add-btn">add</div>
                         </div>
-                        <div className="scroll-150">
+                        <div className="scroll-250">
                             {
                                 list.map((item, i) => {
                                     return (

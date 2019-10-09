@@ -6,6 +6,8 @@ import '../table.css';
 
 
 export class InstrumentsCodes extends Component {
+    
+
     initColumns = () => {
         return [
             {
@@ -21,7 +23,7 @@ export class InstrumentsCodes extends Component {
             },
             {
                 Header: 'Instrument Code',
-                accessor: 'instrumCode',
+                accessor: 'insCode',
             }
         ];
     }
@@ -51,11 +53,11 @@ export class InstrumentsCodes extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    list: state.insCodes,
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = dispatch => ({
+    
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstrumentsCodes)

@@ -262,29 +262,27 @@ export class ElementSettings extends Component {
                             <div onClick={this.addDefine} className="add-btn">add</div>
                         </div>
                     </div>
-                    <div>
-                        <p className="side-t mar-t brou">DOH Criteria</p>
-                        <div className="flex-inst">
-                            <div >
-                                <p className="tit-ins">DOH LOINC</p>
-                                <input className="simple-input wide33" value={this.props.elem.dohLoinc ? this.props.elem.dohLoinc : ""} onChange={this.props.changeDohLoinc} />
-                            </div>
-                            <div >
-                                <p className="tit-ins">{`Criteria + < >`}</p>
-                                <input className="simple-input wide33" value={this.props.elem.dohCriteria ? this.props.elem.dohCriteria : ""} onChange={this.props.changeDohCriteria} />
-                            </div>
-                            <div >
-                                <p className="tit-ins">Result</p>
-                                <input className="simple-input wide33" value={this.props.elem.dohResult ? this.props.elem.dohResult : ""} onChange={this.props.changeDohResults} />
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <div className="gg-der">
                     {this.showDefineList(this.props.elem.defineList)}
                 </div>
-
+                <div>
+                    <p className="side-t mar-t brou">DOH Criteria</p>
+                    <div className="flex-inst">
+                        <div >
+                            <p className="tit-ins">DOH LOINC</p>
+                            <input className="simple-input wide33" value={this.props.elem.dohLoinc ? this.props.elem.dohLoinc : ""} onChange={this.props.changeDohLoinc} />
+                        </div>
+                        <div >
+                            <p className="tit-ins">{`Criteria + < >`}</p>
+                            <input className="simple-input wide33" value={this.props.elem.dohCriteria ? this.props.elem.dohCriteria : ""} onChange={this.props.changeDohCriteria} />
+                        </div>
+                        <div >
+                            <p className="tit-ins">Result</p>
+                            <input className="simple-input wide33" value={this.props.elem.dohResult ? this.props.elem.dohResult : ""} onChange={this.props.changeDohResults} />
+                        </div>
+                    </div>
+                </div>
 
 
 

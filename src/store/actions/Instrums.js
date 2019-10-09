@@ -22,11 +22,30 @@ export const changeType = (e) => ({
     text: e.target.value
 });
 
+
+
+export const setInsCodes = (list) => ({
+    type: 'SET_INS_CODES',
+    list
+});
+
+export const getCodes = (word) => {
+    return async (dispatch, getState) => {
+        try {
+            const res = await API.get(`/v1/ins-codes?type=${word}`);
+            dispatch(setInsCodes(res.data));
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
 export const getInstrums = () => {
     return async (dispatch, getState) => {
         try {
             const res = await API.get(`/v1/instrums`);
             dispatch(setInstrums(res.data));
+            dispatch(getCodes(res.data[0].type));
             dispatch(showInstrum(0));
         } catch (err) {
             console.log(err);
@@ -49,6 +68,7 @@ export const showInstrum = (index) => {
         const list = getState().instrums;
         dispatch(setInstrum(list[index]));
         dispatch(setActiveRow(index));
+        dispatch(getCodes(list[index].type));
         dispatch(setCreateMode(false))
     }
 }

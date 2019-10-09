@@ -11,7 +11,6 @@ export class Elements extends Component {
     render() {
         return (
             <div className="two-parts">
-                
                 <ElementsList />
                 <ElementSettings />
             </div>

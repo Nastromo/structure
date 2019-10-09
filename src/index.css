@@ -1051,7 +1051,7 @@ p.logo-text:hover {
 }
 
 .max-hei {
-    max-height: 100px;
+    max-height: 200px;
     border: 1px solid #dadada;
     overflow: scroll;
     padding: 5px;
@@ -2038,6 +2038,11 @@ p.logo-text:hover {
     overflow: scroll;
 }
 
+.scroll-250 {
+    height: 150px;
+    overflow: scroll;
+}
+
 .back-lin {
     padding: 4px 15px;
     display: flex;
@@ -2450,4 +2455,12 @@ p.logo-text:hover {
 
 .nader {
     margin: 0 10px 0 0;
+}
+
+.ali-top {
+    align-items: flex-start;
+}
+
+.fderdd {
+    margin-top: 18px;
 }
