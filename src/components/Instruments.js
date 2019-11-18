@@ -10,10 +10,12 @@ export class Instruments extends Component {
 
 
     render() {
+        console.log(this.props.instrum)
         return (
             <div className="two-parts">
                 <InstrumentsList />
-                <InstrumentSettings />
+                {this.props.instrum.id || this.props.isCreate? <InstrumentSettings /> : null}
+                
 
             </div>
         )
@@ -21,7 +23,8 @@ export class Instruments extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    instrum: state.instrum,
+    isCreate: state.isInsCreateMode,
 })
 
 const mapDispatchToProps = {

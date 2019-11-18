@@ -41,7 +41,7 @@ export const instrum = (state = [], action) => {
     }
 }
 
-export const activeInstrumRow = (state = 0, action) => {
+export const activeInstrumRow = (state = null, action) => {
     switch (action.type) {
         case `SET_ACTIVE_INSTRUM_ROW`:
             return action.index;
@@ -63,6 +63,24 @@ export const departaments = (state = [], action) => {
     switch (action.type) {
         case `SET_DEPS_INSTRUM`:
             return action.list;
+
+        default: return state;
+    }
+}
+
+export const insName = (state = null, action) => {
+    switch (action.type) {
+        case `CHANGE_INS_NAM`:
+            return action.text;
+
+        default: return state;
+    }
+}
+
+export const insSerial = (state = null, action) => {
+    switch (action.type) {
+        case `CHANGE_INS_SE`:
+            return action.text;
 
         default: return state;
     }

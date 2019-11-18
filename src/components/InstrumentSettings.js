@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import DropDown from './DropDown';
 import { setSerial } from '../store/actions/Instrument';
 import InstumentCodes from './InstumentCodes';
-import { addInstrum, delInstrum, changeType, getDeps, handleCreate, handleUpdate } from '../store/actions/Instrums';
+import { addInstrum, delInstrum, changeType, getDeps, handleCreate, handleUpdate, changeInsSerial, changeInsName } from '../store/actions/Instrums';
 
 
 
@@ -17,11 +17,13 @@ export class InstrumentSettings extends Component {
     }
 
     addInstrum = (e) => {
-        if (this.name && this.serial) {
+        if (this.props.insName && this.props.insSerial) {
             this.props.addInstrum({
-                name: this.name.value,
-                serial: this.serial.value,
+                name: this.props.insName,
+                serial: this.props.insSerial,
             });
+            this.props.changeInsSerial({ target: { value: null } });
+            this.props.changeInsName({ target: { value: null } });
         }
     }
 
@@ -57,9 +59,9 @@ export class InstrumentSettings extends Component {
                     </div>
                     <div style={{ width: "100%" }}>
                         <div className="flex-in-ad fderdd">
-                            <input className="simple-input mar-ri-b" ref={el => this.name = el} placeholder="Instrument Name" type="text" />
-                            <input className="simple-input mar-ri-b" ref={el => this.serial = el} placeholder="Serial #" type="text" />
-                            <div onClick={this.addInstrum} className="add-btn">add</div>
+                            <input className="simple-input mar-ri-b" value={this.props.insName ? this.props.insName : ""} onChange={this.props.changeInsName} placeholder="Instrument Name" type="text" />
+                            <input className="simple-input mar-ri-b" value={this.props.insSerial ? this.props.insSerial : ""} onChange={this.props.changeInsSerial} placeholder="Serial #" type="text" />
+                            <div onClick={this.addInstrum} className="add-btn-dd">add</div>
                         </div>
                         <div className="scroll-250">
                             {
@@ -86,6 +88,8 @@ export class InstrumentSettings extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    insName: state.insName,
+    insSerial: state.insSerial,
     isCreateMode: state.isInsCreateMode,
     instrum: state.instrum,
     isDepOpen: state.dropdownStatus.departments,
@@ -101,6 +105,8 @@ const mapDispatchToProps = dispatch => ({
     getDeps: () => dispatch(getDeps()),
     handleCreate: () => dispatch(handleCreate()),
     handleUpdate: () => dispatch(handleUpdate()),
+    changeInsSerial: (e) => dispatch(changeInsSerial(e)),
+    changeInsName: (e) => dispatch(changeInsName(e)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstrumentSettings)

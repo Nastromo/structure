@@ -31,8 +31,8 @@ export const getElements = (id) => {
         try {
             const res = await API.get('/v1/elements');
             dispatch(setElements(res.data));
-            dispatch(setElement(res.data[0]));
-            dispatch(setActiveElemRow(0));
+            // dispatch(setElement(res.data[0]));
+            // dispatch(setActiveElemRow(0));
         } catch (err) {
             console.log(err);
         }

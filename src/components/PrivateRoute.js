@@ -11,6 +11,7 @@ import Specimens from './Specimens';
 import Tests from './Tests';
 import Departments from './Departments';
 import Orderset from './Orderset';
+import Settings from './Settings';
 
 
 
@@ -25,6 +26,7 @@ export class PrivateRoute extends Component {
             <div>
                 <Navigation />
                 <Switch>
+                    <Route exact path="/account/settings" component={Settings} />
                     <Route exact path="/account/departments" component={Departments} />
                     {/* <Route exact path="/account/main" component={Main} /> */}
                     <Route exact path="/account/products" component={Product} />

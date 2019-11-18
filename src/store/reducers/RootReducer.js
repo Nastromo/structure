@@ -6,7 +6,7 @@ import { testsPrice } from './TestQuantity';
 import { sideMenu, subItems } from './ShowMenu';
 import { instrument } from './Instrument';
 import { code, desc, specList } from './Specs';
-import { instrums, instrum, activeInstrumRow, departaments, isInsCreateMode } from './Instrums';
+import { instrums, instrum, activeInstrumRow, departaments, isInsCreateMode, insName, insSerial } from './Instrums';
 import { deps } from './Deps';
 import { checkbox } from './CheckBox';
 import { tests, testsLoading, testsErrored, chosenTest, selectedTestRow, isCreateMode, spes } from './Tests';
@@ -17,6 +17,8 @@ import { insCodes } from '../reducers/InsCodes';
 
 
 const RootReducer = combineReducers({
+    insName,
+    insSerial,
     insCodes,
     spes,
     searchQuery,

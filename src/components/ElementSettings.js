@@ -111,11 +111,12 @@ export class ElementSettings extends Component {
             return (
                 <div key={i} className="flex-it">
                     <div key={i} className="flex-inst def-item marg-ri">
-                        <div className="item-rang bas17">{item.ageFrom}</div>
-                        <div className="item-rang bas17">{item.ageTo}</div>
-                        <div className="item-rang bas17">{item.gender}</div>
-                        <div className="item-rang bas17">{item.low}</div>
-                        <div className="item-rang bas17">{item.high}</div>
+                        <div className="item-rang bas12">{item.ageFrom}</div>
+                        <div className="item-rang bas12">{item.ageTo}</div>
+                        <div className="item-rang bas12">{item.gender}</div>
+                        <div className="item-rang bas12">{item.low}</div>
+                        <div className="item-rang bas12">{item.high}</div>
+                        <div className="item-rang bas12">{item.code}</div>
                     </div>
                     <div id={i} onClick={this.delRanges} className="del-all">del</div>
                 </div>
@@ -321,15 +322,15 @@ export class ElementSettings extends Component {
 
                 <p className="side-t mar-t">Nornal Ranges</p>
                 <div className="flex-inst ali-end">
-                    <div className="bas17">
+                    <div className="bas12">
                         <p className="tit-ins">Age from</p>
                         <input className="simple-input-n" type="text" ref={el => this.ageFrom = el} />
                     </div>
-                    <div className="bas17">
+                    <div className="bas12">
                         <p className="tit-ins">Age to</p>
                         <input className="simple-input-n" type="text" ref={el => this.ageTo = el} />
                     </div>
-                    <div className="bas17">
+                    <div className="bas12">
                         <p className="tit-ins">Gender</p>
                         <DropDown
                             option={this.props.genderNorm}
@@ -337,13 +338,21 @@ export class ElementSettings extends Component {
                             menu={this.gender}
                             id="genderNorm" />
                     </div>
-                    <div className="bas17">
+                    <div className="bas12">
                         <p className="tit-ins">Low</p>
                         <input className="simple-input-n" type="text" ref={el => this.low = el} />
                     </div>
-                    <div className="bas17">
+                    <div className="bas12">
                         <p className="tit-ins">High</p>
                         <input className="simple-input-n" type="text" ref={el => this.high = el} />
+                    </div>
+                    <div className="bas12">
+                        <p className="tit-ins">Comment Code</p>
+                        <DropDown
+                            option={this.props.commentCode}
+                            status={this.props.isComCodeOpen}
+                            menu={this.props.commentCodes}
+                            id="commentCode" />
                     </div>
                     <div onClick={this.addRanges} className="add-btn">add</div>
                 </div>
@@ -364,6 +373,7 @@ export class ElementSettings extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    commentCodes: [`option1`, `option2`],
     types: state.types,
     elem: state.element,
     departments: state.deps,

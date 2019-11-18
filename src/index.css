@@ -1850,6 +1850,20 @@ p.logo-text:hover {
     border: 1px solid #e7eaec;
 }
 
+.add-btn-dd {
+    height: 37px;
+    width: 230px;
+    background: #12a588;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
 .add-btn {
     height: 37px;
     width: 37px;
@@ -2440,6 +2454,10 @@ p.logo-text:hover {
 
 .bas17 {
     flex-basis: 17%;
+}
+
+.bas12 {
+    flex-basis: 12%;
 }
 
 .bas20 {

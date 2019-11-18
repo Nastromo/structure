@@ -60,6 +60,10 @@ export class Navigation extends Component {
         this.props.showItems(!this.props.subItems);
     }
 
+    goToSettings = () => {
+        console.log(this.props.history.push(`/account/settings`));
+    }
+
     render() {
         return (
             <div className="white-back">
@@ -75,6 +79,7 @@ export class Navigation extends Component {
                     </div>
 
                     <div className="work-info">
+                        <p className="nav-te" onClick={this.goToSettings}>Settings</p>
                         <p className="nav-te" onClick={this.handleExit}>Log out</p>
                     </div>
                 </div>
